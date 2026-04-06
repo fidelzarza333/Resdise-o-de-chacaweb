@@ -7,7 +7,7 @@
 
 body{
     /*background-color: rgb(1, 1, 10);*/
-    background-color: aqua;
+    background-color: rgb(0, 0, 0);
 }
 
 .header{
@@ -112,7 +112,7 @@ img{
 }
 
 .cuerpo a{
-    background-color: rgb(230, 118, 202);
+    background-color: rgb(65, 78, 196);
     width: 100px;
     height: 16px;
     padding: 10px;
@@ -178,12 +178,14 @@ footer{
 
 #margen{
     margin-bottom: 20px;
+    color: white;
 }
 
 .pregunta-container ul li details{
     border: 1px solid #ccc;
     border-radius: 6px;
-    background-color: rgb(218, 218, 218);
+    color: white;
+    background-color: rgb(10, 0, 13);
     margin-block: 10px;
 }
 
@@ -285,17 +287,18 @@ img{
     flex-wrap: wrap;
     gap: 25px;
     justify-content: center;
-    align-items: center;
+    align-items: stretch; 
     color: aliceblue;
     border-radius: 25px;
 }
 
 .card{
     width: 300px;
-    height: 200px;
-    background-color: black;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 15px;
+    min-height: 350px; /* 🔥 esto iguala visualmente */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-
+.card p{
+    flex-grow: 1; /* empuja el botón abajo */
+}
