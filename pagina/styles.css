@@ -13,7 +13,9 @@ html{
 body{
     /*background-color: rgb(1, 1, 10);*/
     /*background-color: aqua;*/
-    background-color: rgb(14, 11, 31);
+    /*background-color: rgb(14, 11, 31);*/
+    background-color: #060914;
+
 }
 
 .header{
@@ -30,6 +32,12 @@ body{
 a{
     color: white;
 }
+
+.titleheader{
+    display: flex;
+    align-items: center;
+}
+
 
 img{
     width: 100px;
@@ -116,6 +124,26 @@ img{
     width: 70px;
 }
 
+.cita{
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+    font-family: "Times New Roman" , serif;
+    line-height: 1.8;
+    font-size: 23px;
+    color:white;
+    font-style: italic;
+
+}
+
+.cita p{
+    margin: 0;
+}
+
+.separación {
+    margin: 30px 0;
+}2
+
 .cuerpo{
     display: flex;
     flex-direction: column;
@@ -154,33 +182,163 @@ img{
     transform: scale(1.12);
 }
 
-.informacion{
+/*Footer*/
+
+.footer{
+    width: 100%;
+    background: rgb(5, 3, 15);
+    border-top: 2px solid rgba(199, 125, 255, 0.15) ;
+    padding: 72px 80px 32px;
+}
+
+.footer-top{
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr;
+    grid: 20px;
+}
+
+.footer-logo{
+
+    color: rgba(255, 255, 255, 0.64);
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.footer-logo-desc{
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    max-width: 260px;
+    line-height: 1.75;
+    letter-spacing: -0.3px;
+    margin-bottom: 20px;
+
+}
+
+.footer-redes-list{
     display: flex;
-    width: 35%;
-    color: white; 
-    padding: 30px;
-    box-sizing: border-box;
-    flex-direction: column;
+    gap: 21px;
+}
+
+.footer-redes-item{
+    color: #fff;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    align-items: center;
+}
+
+.social-btn{
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
     justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s;
 }
 
-footer iframe{
-    width: 65%; 
-    border: none; 
+.social-btn:hover{
+    background-color: rgba(199, 125, 255, 0.15);
+    border-color: rgba(199, 125, 255, 0.5);
 }
 
-footer li{
-    margin-block: 8px;
+.social-btn svg{
+    width: 25px;
+    height: 25px;
+    fill: rgba(255, 255, 255, 0.5);
+    transition: all 0.15s;
 }
 
-footer #margen{
-    margin-top: 20px;
+.social-btn:hover svg{
+    fill: rgb(199, 125, 255);
 }
 
-footer{
+
+
+.footer-col{
     display: flex;
-    background: rgba(0, 0, 0, 0.55);
+    flex-direction: column;
+    justify-content: flex-start;
 }
+
+.footer-col-tittle{
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 11px;
+    letter-spacing: 1.75;
+    
+}
+
+.footer-col-content ul{
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    padding: 0;
+}
+
+.footer-col-content ul li a{
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    transition: all 0.15s;
+}
+
+.footer-col-content ul li a:hover{
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-contact-list{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.footer-contact-item{
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.contact-icon{
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background: rgba(199, 125, 255, 0.05);
+    border: 1px solid rgba(199, 125, 255, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.contact-icon svg{
+    fill: rgba(199, 125, 255, 1);
+    width: 14px;
+    height: 14px;
+}
+
+.contact-label{
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: rgba(255, 255, 255, 0.25);
+    margin-bottom: 2PX;
+}
+
+.contact-value{
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 600;
+}
+
 
 .pregunta-container ul li summary{
     display: flex;
@@ -209,6 +367,7 @@ footer{
     gap: 20px;
     padding: 30px;
     margin: 20px;
+    color: white;
 }
 
 #margen{
@@ -218,8 +377,9 @@ footer{
 .pregunta-container ul li details{
     border: 1px solid #ccc;
     border-radius: 6px;
-    background-color: rgb(218, 218, 218);
+    background-color: rgb(139, 139, 139);
     margin-block: 10px;
+    color: white
 }
 
 .pregunta-container ul li p{
@@ -291,26 +451,167 @@ img{
 
 .descripcion{
     background-color: rgb(5, 9, 22);
-    color: aliceblue;
-    margin: 80px;
-    min-height: 50vh;
+    color: #fff;
+    padding: 120px 80px 30px 80px;
+
 }
 
-.horarios{
-    background-color: chocolate;
-    height: 500px;
-    width: 100%;
-}
-
-.desc-container{
+.desc-inner{
     display: flex;
     flex-direction: column;
-    gap: 50px;
-    padding: 30px 20px;
+    gap: 30px;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.desc-left{
+    position: static;
+    top: 150px;
+}
+
+.desc-left h2{
+    letter-spacing:-1px;
+    font-weight: 600;
+    font-size: clamp(34px, 4vw, 52px);
+    line-height: 1.1;
+}
+
+.desc-divider{
+    height: 2px;
+    width: 52px;
+    background-color: #fff;
+    margin-top: 20px;
+}
+
+.desc-right{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+}
+
+.desc-right p{
+    line-height: 1.85;
+    font-weight: 500;
+    font-size: 14px;
+    color: rgb(166, 178, 208);
+}
+
+.desc-right p strong{
+    font-weight: 700;
+    color: rgb(96, 165, 246);
+}
+
+.desc-stats{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 10px;
+    color: rgb(166, 178, 208);
+}
+
+.desc-item{
+    background-color: rgb(6, 9, 20);
+    border: 1px solid rgba(96, 165, 250, 0.15);
+    border-radius: 25px;
+    padding: 22px 16px;
     text-align: center;
+    transition: all 0.15s;
+    color: rgb(121, 134, 168);
+}
+
+.stat-num{
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+.stat-label{
+    font-size: 15px;
+    margin-top: 5px;
+    letter-spacing: -1px;
+}
+
+
+/*Horarios*/
+
+.horarios{
+    max-height: 500px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 100px;
+    table{
+        width: 100%;
+        color:white;
+    }
+    thead tr{
+        background-color: rgb(32, 28, 28);
+    }
+    th, td {
+        padding: 10px;
+        text-align: center;
+        vertical-align: middle;
+        border: 1px solid black;
+    }
+    td:nth-child(odd){
+        font-weight: bold;
+    }
+    tr:nth-child(1){
+        background-color: rgb(67, 110, 200);
+    }
+    tr:nth-child(8){
+        background-color:rgb(123, 91, 160);
+    }
+    tr:nth-child(n+2):nth-child(-n+7){
+        td:nth-child(even){
+            background-color: rgb(82, 82, 82);
+        }
+        td:nth-child(odd){
+            background-color: rgb(30, 30, 30)
+        }
+    }
+    td:nth-child(even){
+        font-weight: bold;
+    }
+}
+
+.perfil{
+    background-color: #060914;
+    
 }
 
 .card-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin: 100px;
+    justify-content: space-between;
+}
+
+.card{
+    background-color: rgb(6, 8, 27);
+    padding: 22px;
+    border: 1px solid rgba(96, 165, 250, 0.15);
+    border-radius: 20px;
+}
+
+.card-titulo h3{
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.card-cuerpo{
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(166, 178, 208);
+}
+
+
+
+/*.card-container{
     margin: 80px;
     padding: 20px;
     display: flex;
@@ -330,12 +631,39 @@ img{
     padding: 20px;
     margin: 5px;
     border-radius: 35px;
-}
-
+}*/
 
 /*Escuela*/
 
 .escuela-container{
-    padding: 30px;
+    margin-top: 10px;
+    padding: 0 30px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.3;
+    text-align: justify;
+    font-size: 19px;
     color: white;
+}
+
+.escuela-titlecontainer{
+    margin-top: 40px;
+    padding: 0 30px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    font-size: 26px;
+    color: white; 
+    font-weight: bold;
+}
+
+.escuela-item{
+    list-style-type: disc !important;
+    list-style-position: inside !important;
+    margin-top: 10px;
+    margin-left: 30px;
+    display: block;
+    padding-left: 0;
+    color: white;
+    font-size:19px;
 }
