@@ -21,8 +21,8 @@ body{
 
 .header{
     color: white;
-    min-height: 70vh;
-    width: 100vw;
+    min-height: 60vh;
+    width: 100%;
     background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.973) 0%,
@@ -94,8 +94,8 @@ img{
     left: 0%;
     top: 0;
     font-size: 18px;
-    transform: translateY(50%); /*Investigar*/
-    max-width: 340px;
+    transform: translateY(30%); /*Investigar*/
+    max-width: 400px;
     margin: 0px 50px;
     display: flex;
     flex-direction: column;
@@ -116,10 +116,31 @@ img{
     padding-bottom: 17px;
     display: inline-block;
     padding: 5px;
-    font-size: 16px;
+    font-size: 18px;
     letter-spacing: -0.3px;
-    margin-top: 3px;
 }
+
+.header .stats{
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+
+    .stat-item{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        min-width: 100px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .line{
+        width: 1px;
+        height: 50px;
+        background-color: #fff;
+    }
+}
+
 
 .btn-1{
     background-color: blue;
@@ -169,17 +190,18 @@ img{
     padding: 20px;
     border: 1px solid rgba(96, 165, 250, 0.5);
     border-radius: 20px;
+    transition: all 0.35s;
 }
 
 .cuerpo{
     display: flex;
     flex-direction: column;
     gap: 15px;
-    height: 130px;
+    min-height: 130px;
 }
 
 .cuerpo p{
-    font-size: 20px;
+    font-size: 18px;
     padding-top: 10px;
     width: 100%;
     letter-spacing: 0.3px;
@@ -190,8 +212,6 @@ img{
     display: flex;
     justify-content: space-between;
     height: 30px;
-    margin-top: 25px;
-
 }
 
 .tarjeta-footer a{
@@ -212,7 +232,7 @@ img{
 }
 
 .tarjeta:hover{
-    transform: scale(1.12);
+    transform: perspective(1000px) rotateY(20deg);
     border: 2px solid rgba(96, 165, 250, 0.38) ; 
 }
 
@@ -313,10 +333,9 @@ footer{
     width: 100%;
     background: rgb(5, 3, 15);
     border-top: 2px solid rgba(199, 125, 255, 0.15) ;
-    padding: 72px 80px 32px;
-    box-sizing: border-box;
 
     .top{
+        padding-top: 20px;
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1.8fr 1fr 1fr 1fr;
@@ -467,6 +486,7 @@ footer{
         font-weight: 300px;
         margin-top: 60px;
         margin-left: 15px;
+        text-align: center;
     }
 }
 
@@ -603,7 +623,7 @@ img{
 }
 
 .desc-item{
-        background: #0b1029;
+    background: #0b1029;
     border: 1px solid rgba(96, 165, 250, 0.15);
     border-radius: 25px;
     padding: 22px 16px;
@@ -691,9 +711,10 @@ img{
     height: 360px;
     border-radius: 25px;
     margin-bottom: 150px;
-    display: flex;
     justify-content: center;
+    display: flex;
     overflow: hidden;
+    position: relative;
 
     .container{
         display: flex;
@@ -754,6 +775,27 @@ img{
             border-radius: 50% 50% 0 0;
         }
     }
+
+    .botones{
+        position: absolute;
+        top: 44%;
+        left: 0;
+        right: 0;
+        content: '';
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+
+        button{
+            padding: 6px 12px;
+            background: rgba(0, 0, 0, 0.473);
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            height: 50px;
+            width: 50px;
+        }
+    }
 }
 
 
@@ -783,7 +825,6 @@ img{
             }
 
             .cuerpo{
-                font-weight: 500;
                 line-height: 1.75;
                 font-size: 14px;
                 color: rgb(121, 134, 168)
@@ -955,13 +996,14 @@ img{
             color: #fff;
             background-color: #0b1029;
             border: 1px solid rgba(96, 165, 250, 0.12);
+            transition: 0.15s;
 
             strong{
                 font-weight: 700;
             }
 
             &:hover{
-                width: 400px;
+                border-color: rgba(96, 165, 250, 0.32);
             }
         }
 
@@ -982,17 +1024,11 @@ img{
 
 
 .asistencia-section{
-    background-color: purple;
     padding: 0 80px 100px;
     max-width: 1200px;
     margin: auto;
-    
-    .h2 {
-        text-align: center;
-    }
 
     .grid{
-        background-color: aqua;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -1000,12 +1036,14 @@ img{
     }
 
     .card{
-        background-color: aliceblue;
+        background-color: #0b1029;
+        border: 1px solid rgba(96, 165, 250, 0.12);
         flex: 1 1 200px;
         margin: 10px;
         max-width: 300px;
         border-radius: 20px;
         padding: 10px;  
+        color: #fff;
     }
 
     .num {
@@ -1019,6 +1057,8 @@ img{
     }
 
     .info-block {
+        color: #fff;
+
         h3 {
             text-align: center;
             margin: 10px;
