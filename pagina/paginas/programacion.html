@@ -74,13 +74,13 @@
 
     <section class="horarios">
         <div class="btn-container">
-            <button class="active">4to Año</button>
-            <button>5to Año</button>
-            <button>6to Año</button>
-            <button>7to Año</button>
+            <button data-tab="anio-4" class="active">4to Año</button>
+            <button data-tab="anio-5" >5to Año</button>
+            <button data-tab="anio-6" >6to Año</button>
+            <button data-tab="anio-7" >7to Año</button>
         </div>
         <div class="tabla-container">
-            <table>
+            <table class="tabla active" id="anio-4">
                 <thead>
                     <tr>
                         <th colspan="7" scope="col">Cuarto año</th>
@@ -161,8 +161,9 @@
                     </tr>
                 </tbody>
             </table>
-            <!--
-            <table>
+            
+
+            <table class="tabla" id="anio-5">
                 <thead>
                     <tr>
                         <th colspan="7" scope="col">Quinto año</th>
@@ -243,7 +244,9 @@
                     </tr>
                 </tbody>
             </table>
-            <table>
+
+
+            <table class="tabla" id="anio-6">
                 <thead>
                     <tr>
                         <th colspan="7" scope="col">Sexto año</th>
@@ -324,7 +327,9 @@
                     </tr>
                 </tbody>
             </table>
-            <table>
+
+            
+            <table class="tabla" id="anio-7">
                 <thead>
                     <tr>
                         <th colspan="7" scope="col">Septimo año</th>
@@ -411,14 +416,20 @@
 
     <section class="galeria-section">
         <div class="container">
-            <div class="wrapper active">
+            <div class="wrapper">
                 <img src="../imagenes/torno.png" alt="1">
             </div>
             <div class="wrapper">
-                <img src="../imagenes/torno.png" alt="2">
+                <img src="../imagenes/logo.png" alt="2">
             </div>
             <div class="wrapper active">
-                <img src="../imagenes/torno.png" alt="3">
+                <img src="../imagenes/fondo.png" alt="3">
+            </div>
+            <div class="wrapper">
+                <img src="../imagenes/logo.png" alt="2">
+            </div>
+            <div class="wrapper">
+                <img src="../imagenes/fondo.png" alt="2">
             </div>
         </div>
         <div class="botones">
@@ -488,5 +499,6 @@
     </section>
 
     <section class="salida"></section>
+    <script src="../script.js"></script>
 </body>
 </html>
