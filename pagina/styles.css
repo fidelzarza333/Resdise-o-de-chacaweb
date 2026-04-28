@@ -191,8 +191,9 @@ body{
         transition: all 0.35s;
 
         &:hover{
+            border: 1px solid rgba(96, 165, 250, 0.38) ; 
             transform: perspective(1000px) rotateY(20deg);
-            border: 2px solid rgba(96, 165, 250, 0.38) ; 
+           
         }
     
         .titulo{
@@ -635,47 +636,119 @@ footer{
             color: #fff;
             cursor: pointer;
             transition: all 0.3s ease;
-        }
-
-        .active{
-            background-color: violet;
+            
+            &.active{
+                background-color: violet;
+            }
         }
     }
 
-    .tabla-container{
-        position: relative;
+    /* Contenedor principal de cada año */
+    .tabla-grid {
+        display: none;
+        grid-template-columns: 1fr 1fr 1fr;
         width: 100%;
-        min-height: 400px;
+        color: white;
 
-        .tabla{
-            width: 100%;
-            height: 100%;
-            color:white;
-            opacity: 0;
-            visibility: hidden;
-            position: absolute;
-            width: 100%;
-            transition: opacity 0.4s ease;
-            
-            &.active{
-            opacity: 1;
-            visibility: visible;
-            position: absolute;
-            }
+        &.active {
+            display: grid;
+        }
 
-            thead tr{
-                background-color: rgb(32, 28, 28);
-            }
+        /* Título del año ocupa todo el ancho */
+        .tabla-titulo {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-weight: bold;
+            padding: 0.75rem;
+            background: #222;
+            color: white;
+            border: 1px solid #ddd;
+        }
 
-            th, td {
-                padding: 10px;
-                text-align: center;
-                vertical-align: middle;
-                border: 1px solid rgb(5, 9, 11);
+        /* Cada categoría es su propio sub-grid de 2 columnas */
+        .categoria {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            text-align: center;
+            align-items: center;
+
+            /* Encabezado de categoría ocupa ambas columnas */
+            .cat-header {
+                display: flex;
+                grid-column: 1 / -1;
                 font-weight: bold;
+                background: #444;
+                color: white;
+                padding: 0.6rem;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #ddd;
             }
 
-            tr{
+            /* Sub-encabezados Materia / CHT */
+            .cat-subheader {
+                display: flex;
+                font-weight: bold;
+                background: #666;
+                color: white;
+                padding: 0.5rem;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #ddd;
+            }
+
+            /* Cada fila es un sub-grid de 2 columnas dentro de .categoria */
+            .fila {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                grid-column: 1 / -1;
+                border: 1px solid #ddd;
+                align-items: stretch;
+                justify-content: center;
+
+                &.total {
+                    background: #f0f0f0;
+                    border-top: 2px solid #999;
+                    font-weight: bold;
+                    color: black;
+                }
+                
+                div {
+                    display: flex; 
+                    padding: 0.5rem 0.6rem;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:last-child {
+                        text-align: center;
+                        border-left: 1px solid #ddd;
+                    }
+                }
+            }
+        }
+
+        /* Horas totales del año */
+        .horas-totales {
+            grid-column: 1 / -1;
+            text-align: right;
+            font-weight: bold;
+            padding: 0.6rem;
+            background: #222;
+            color: white;
+            border: 1px solid #ddd;
+        }
+    }
+
+        /* Móvil: categorías apiladas verticalmente */
+    @media (max-width: 800px) {
+        .tabla-grid {
+            grid-template-columns: 1fr;
+        }
+        .fila.vacia {
+            display: none;
+        }
+    }
+            /*tr{
                 height: 60px;
 
                 &:nth-child(1){
@@ -692,9 +765,7 @@ footer{
                         background-color: rgb(30, 30, 30)
                     }
                 }
-            }
-        }
-    }
+            }*/
 }
 
 .galeria-section{
@@ -727,16 +798,16 @@ footer{
             transform: scale(0.7);
             opacity: 0.5;
 
+            &.active{
+                transform: scale(1);
+                opacity: 1;
+            }
+
             img{
                 height: 100%;
                 width: 100%;
                 object-fit: cover;
             }
-        }
-
-        .active{
-            transform: scale(1);
-            opacity: 1;
         }
     }
 
@@ -809,6 +880,7 @@ footer{
     padding: 100px 80px;
     display: flex;
     justify-content: center;
+    animation: MoverAbajo .8s ease;
 
     .inner{
         max-width: 900px;
@@ -854,12 +926,14 @@ footer{
     padding: 0 80px 100px;
     max-width: 1200px;
     margin: auto;
+    
 
     p{
         margin-top: 50px;
         font-size: 14px;
         line-height: 1.7;
         color: #7896ab;
+        animation: MoverAbajo .8s ease;
     }
 
     .aic-header{
@@ -867,6 +941,7 @@ footer{
         padding: 40px 48px;
         margin-bottom: 40px;
         color: #fff;
+        animation: MoverDerecha 1s ease;
 
         h2{
             font-size: clamp(18px, 2.5vw, 26px);
@@ -881,6 +956,7 @@ footer{
             font-size: 14px;
             line-height: 1.7;
             color: #7896ab;
+            animation: MoverAbajo .8s ease;
         }
     }
 
@@ -889,6 +965,7 @@ footer{
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 12px;
         margin-top: 24px;
+        
 
         .normas{
             display: flex;
@@ -901,7 +978,45 @@ footer{
             color: #ffffff99;
             background-color: #0b1029;
             border: 1px solid rgba(96, 165, 250, 0.12);
+            animation: MoverIzquierda 1s ease;
         }
+    }
+}
+
+@keyframes MoverAbajo{
+    from{
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes MoverDerecha{
+    from{
+        transform: translateX(-200px);
+        opacity: 0;
+    }
+
+    to{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes MoverIzquierda{
+    from{
+        transform: translateX(350px);
+        opacity: 0;
+        
+    }
+
+    to{
+        transform: translateX(0);
+        opacity: 1;
     }
 }
 
@@ -929,18 +1044,22 @@ footer{
             letter-spacing: 0.3px;
             transition: all 0.2s; 
 
+            &.active{
+                background-color: violet;
+            }
+
             &:hover{
                 color: white;
             }
-        }
-
-        .active{
-            background-color: violet;
         }
     }
 
     .tab-panel{
         display: none;
+
+        &.active{
+            display: block;
+        }
 
         .list{
             display: flex;
@@ -959,7 +1078,9 @@ footer{
             color: #fff;
             background-color: #0b1029;
             border: 1px solid rgba(96, 165, 250, 0.12);
+            opacity: 0;
             transition: 0.15s;
+            animation: MoverIzquierda .6s ease forwards;
 
             strong{
                 font-weight: 700;
@@ -980,10 +1101,21 @@ footer{
             }
         }
 
-    }
+        .item:nth-child(1) { animation-delay: 0.1s; }
+        .item:nth-child(2) { animation-delay: 0.2s; }
+        .item:nth-child(3) { animation-delay: 0.3s; }
+        .item:nth-child(4) { animation-delay: 0.4s; }
+        .item:nth-child(5) { animation-delay: 0.5s; }
+        .item:nth-child(6) { animation-delay: 0.6s; }
+        .item:nth-child(7) { animation-delay: 0.7s; }
+        .item:nth-child(8) { animation-delay: 0.8s; }
+        .item:nth-child(9) { animation-delay: 0.9s; }
+        .item:nth-child(10) { animation-delay: 1.1s; }
+        .item:nth-child(11) { animation-delay: 1.2s; }
+        .item:nth-child(12) { animation-delay: 1.3s; }
+        .item:nth-child(13) { animation-delay: 1.5s; }
+        .item:nth-child(14) { animation-delay: 1.6s; }
 
-    .tab-panel.active{
-        display: block;
     }
 }
 

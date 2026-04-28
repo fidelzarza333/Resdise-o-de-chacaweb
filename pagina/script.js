@@ -21,6 +21,81 @@ buttons1.forEach(button => {
 //Next
 
 
+function igualarFilas() {
+  document.querySelectorAll('.tabla-grid').forEach(grid => {
+    const categorias = grid.querySelectorAll('.categoria');
+    let maxFilas = 0;
+
+    // Encontrar el máximo de filas entre las categorías
+    categorias.forEach(cat => {
+      const cantidad = cat.querySelectorAll('.fila:not(.total)').length;
+      if (cantidad > maxFilas) maxFilas = cantidad;
+    });
+
+    // Agregar filas vacías a las que tienen menos
+    categorias.forEach(cat => {
+      const filas = cat.querySelectorAll('.fila:not(.total)').length;
+      const diferencia = maxFilas - filas;
+      const filaTotal = cat.querySelector('.fila.total');
+
+      for (let i = 0; i < diferencia; i++) {
+        const filaVacia = document.createElement('div');
+        filaVacia.classList.add('fila', 'vacia');
+        filaVacia.innerHTML = '<div></div><div></div>';
+        cat.insertBefore(filaVacia, filaTotal);
+      }
+    });
+  });
+}
+
+
+function igualarAlturasPorIndice() {
+  document.querySelectorAll('.tabla-grid').forEach(grid => {
+    const categorias = Array.from(grid.querySelectorAll('.categoria'));
+
+    // Resetear alturas
+    categorias.forEach(cat => {
+      Array.from(cat.children).forEach(el => {
+        el.style.height = 'auto';
+      });
+    });
+
+    // Convertir cada categoría en array de hijos
+    const elementosPorCategoria = categorias.map(cat =>
+      Array.from(cat.children)
+    );
+
+    const maxFilas = Math.max(...elementosPorCategoria.map(arr => arr.length));
+
+    for (let i = 0; i < maxFilas; i++) {
+      let maxAltura = 0;
+
+      // Buscar altura máxima en esa "fila lógica"
+      elementosPorCategoria.forEach(elementos => {
+        if (!elementos[i]) return;
+        const altura = elementos[i].getBoundingClientRect().height;
+        if (altura > maxAltura) maxAltura = altura;
+      });
+
+      // Aplicar esa altura a todos los elementos en ese índice
+      elementosPorCategoria.forEach(elementos => {
+        if (!elementos[i]) return;
+        elementos[i].style.height = maxAltura + 'px';
+      });
+    }
+  });
+}
+// Llamarlo al cargar la página
+window.addEventListener('load', () => {
+  igualarFilas();
+  igualarAlturasPorIndice();
+});
+
+window.addEventListener('resize', () => {
+  igualarAlturasPorIndice();
+});
+
+
 
 const buttons2 = document.querySelectorAll(".btn-container button[data-tab]");
 console.log(buttons2);
