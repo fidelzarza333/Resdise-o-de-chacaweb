@@ -99,7 +99,7 @@ window.addEventListener('resize', () => {
 
 const buttons2 = document.querySelectorAll(".btn-container button[data-tab]");
 console.log(buttons2);
-const tablas = document.querySelectorAll(".tabla");
+const tablas = document.querySelectorAll(".tabla-grid");
 
 buttons2.forEach(button => {
     button.addEventListener("click", () =>{
@@ -111,6 +111,8 @@ buttons2.forEach(button => {
         const tab = button.getAttribute("data-tab");
 
         document.getElementById(tab).classList.add("active")
+
+        igualarAlturasPorIndice();
     });
 });
 

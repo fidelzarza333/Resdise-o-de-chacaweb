@@ -618,7 +618,7 @@ footer{
 .horarios{
     width: 100%;
     box-sizing: border-box;
-    padding: 100px;
+    padding: clamp(20px, 8vh, 100px);
 
     .btn-container{
         display: flex;
@@ -644,11 +644,19 @@ footer{
     }
 
     /* Contenedor principal de cada año */
+    .tabla-grid.dos-col {
+        grid-template-columns: 1fr 1fr;
+    }
+
     .tabla-grid {
+        font-weight: bold;
         display: none;
         grid-template-columns: 1fr 1fr 1fr;
         width: 100%;
         color: white;
+        gap: 1px;
+        background: #ddd;
+        padding: 1px;
 
         &.active {
             display: grid;
@@ -658,11 +666,8 @@ footer{
         .tabla-titulo {
             grid-column: 1 / -1;
             text-align: center;
-            font-weight: bold;
             padding: 0.75rem;
-            background: #222;
-            color: white;
-            border: 1px solid #ddd;
+            background-color: rgb(67, 110, 200);
         }
 
         /* Cada categoría es su propio sub-grid de 2 columnas */
@@ -671,30 +676,25 @@ footer{
             grid-template-columns: 2fr 1fr;
             text-align: center;
             align-items: center;
+            gap: 1px;
 
             /* Encabezado de categoría ocupa ambas columnas */
             .cat-header {
                 display: flex;
                 grid-column: 1 / -1;
-                font-weight: bold;
-                background: #444;
-                color: white;
                 padding: 0.6rem;
                 align-items: center;
                 justify-content: center;
-                border: 1px solid #ddd;
+                background-color: rgb(67, 110, 200);
             }
 
             /* Sub-encabezados Materia / CHT */
             .cat-subheader {
                 display: flex;
-                font-weight: bold;
-                background: #666;
-                color: white;
                 padding: 0.5rem;
                 align-items: center;
                 justify-content: center;
-                border: 1px solid #ddd;
+                background-color: rgb(67, 110, 200);
             }
 
             /* Cada fila es un sub-grid de 2 columnas dentro de .categoria */
@@ -702,26 +702,28 @@ footer{
                 display: grid;
                 grid-template-columns: 2fr 1fr;
                 grid-column: 1 / -1;
-                border: 1px solid #ddd;
                 align-items: stretch;
                 justify-content: center;
+                gap: 1px;
 
-                &.total {
-                    background: #f0f0f0;
-                    border-top: 2px solid #999;
-                    font-weight: bold;
-                    color: black;
-                }
-                
                 div {
                     display: flex; 
                     padding: 0.5rem 0.6rem;
                     align-items: center;
                     justify-content: center;
 
+                    &:first-child{
+                        background-color: rgb(30, 30, 30)
+                    }
+
                     &:last-child {
-                        text-align: center;
-                        border-left: 1px solid #ddd;
+                        background-color: rgb(82, 82, 82);
+                    }
+                }
+
+                &.total {
+                    div{
+                        background-color:rgb(123, 91, 160);
                     }
                 }
             }
@@ -730,42 +732,60 @@ footer{
         /* Horas totales del año */
         .horas-totales {
             grid-column: 1 / -1;
-            text-align: right;
-            font-weight: bold;
+            text-align: center;
             padding: 0.6rem;
-            background: #222;
-            color: white;
-            border: 1px solid #ddd;
+            background-color:rgb(123, 91, 160);
         }
     }
+}
 
-        /* Móvil: categorías apiladas verticalmente */
-    @media (max-width: 800px) {
-        .tabla-grid {
+@media (max-width: 800px) {
+    .horarios {
+        .tabla-grid.dos-col{
             grid-template-columns: 1fr;
         }
-        .fila.vacia {
-            display: none;
+
+        .tabla-grid {
+            grid-template-columns: 1fr;
+            background: transparent;
+            gap: 0;
+
+            .tabla-titulo, .horas-totales{
+                border: 1px solid #ddd;
+            }
+
+            .categoria {
+                gap: 0;
+                margin: 12px 0;
+                border: 1px solid #ddd;
+
+                .cat-header, .cat-subheader {
+                    border-bottom: 1px solid #ddd;
+                }
+
+                .cat-subheader:nth-child(2) {
+                    border-right: 1px solid #ddd;
+                }
+
+                .fila {
+                    gap: 0;
+                    border-bottom: 1px solid #ddd;
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+
+                    div:first-child {
+                        border-right: 1px solid #ddd;
+                    }
+                }
+            }
+
+            .fila.vacia {
+                display: none;
+            }
         }
     }
-            /*tr{
-                height: 60px;
-
-                &:nth-child(1){
-                    background-color: rgb(67, 110, 200);
-                }
-                &:nth-child(8){
-                    background-color:rgb(123, 91, 160);
-                }
-                &:nth-child(n+2):nth-child(-n+7){
-                    td:nth-child(even){
-                        background-color: rgb(82, 82, 82);
-                    }
-                    td:nth-child(odd){
-                        background-color: rgb(30, 30, 30)
-                    }
-                }
-            }*/
 }
 
 .galeria-section{
