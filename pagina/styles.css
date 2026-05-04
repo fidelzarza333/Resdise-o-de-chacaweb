@@ -216,7 +216,7 @@ body{
         border-radius: 20px;
         opacity: 0;
         transition: all 0.35s;
-        animation: RotarCard .5s ease-in-out forwards;
+        
 
         &:hover{
             border: 1px solid rgba(96, 165, 250, 0.38) ; 
@@ -224,11 +224,16 @@ body{
            
         }
 
-        &:nth-child(1) { animation-delay: 0.1s; }
-        &:nth-child(2) { animation-delay: 0.2s; }
-        &:nth-child(3) { animation-delay: 0.3s; }
-        &:nth-child(4) { animation-delay: 0.4s; }
-        &:nth-child(5) { animation-delay: 0.5s; }
+        &.mostrar{
+            animation: RotarCard .5s ease-in-out forwards;
+            &:nth-child(1) { animation-delay: 0.1s; }
+            &:nth-child(2) { animation-delay: 0.2s; }
+            &:nth-child(3) { animation-delay: 0.3s; }
+            &:nth-child(4) { animation-delay: 0.4s; }
+            &:nth-child(5) { animation-delay: 0.5s; }
+        }
+
+        
     
         .titulo{
             display: flex;
@@ -296,7 +301,7 @@ body{
 
 
 
-.faq {
+/*.faq {
     .pregunta-container{
         border-radius: 8px;
         gap: 20px;
@@ -308,6 +313,7 @@ body{
         h1{
             margin-bottom: 20px;
         }
+        
 
         ul li {
             summary{
@@ -328,6 +334,7 @@ body{
                 &::after{
                     content: "↓";
                 }
+
             }
 
             details{
@@ -358,6 +365,133 @@ body{
                 line-height: 1.8;
                 color: #7986a8;
                 opacity: 0;
+            }
+
+            .faq-btn{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 18px 24px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: 500;
+                text-align: left;
+                gap: 16px;
+                color: #e2e8f0;
+            }
+        }
+    }
+}*/
+
+@keyframes BotonesAbajo{
+    from{
+        opacity: 0;
+        transform: translateY(-54px);
+    }
+
+    25%{
+        transform: translateY(-1px);
+    }
+
+    50%{
+        opacity: 1;
+        transform: translateY(-1px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.faq {
+    .pregunta-container{
+        max-width: 1000px;
+        margin: 0 auto;
+        border-radius: 8px;
+        gap: 20px;
+        padding: 30px;
+
+        ul{
+            padding: 0;
+        }
+
+        .faq-item{
+            animation: BotonesAbajo .85s ease forwards;
+            background-color: rgb(11, 16, 41);
+            border: 1px solid rgba(96, 165, 250, 0.12);
+            font-weight: bold;
+            border-radius: 10px;
+            margin-block: 10px;
+            overflow: hidden;
+            opacity: 0;
+
+            &:nth-child(1) { animation-delay: 0.3s; }
+            &:nth-child(2) { animation-delay: 0.6s; }
+            &:nth-child(3) { animation-delay: 0.9s; }
+            &:nth-child(4) { animation-delay: 1.2s; }
+            &:nth-child(5) { animation-delay: 1.5s; }
+            &:nth-child(6) { animation-delay: 1.8s; }
+            &:nth-child(7) { animation-delay: 2.1s; }
+            &:nth-child(8) { animation-delay: 2.4s; }
+            &:nth-child(9) { animation-delay: 2.7s; }
+            &:nth-child(10) { animation-delay: 3.0s; }
+            &:nth-child(11) { animation-delay: 3.3s; }
+        
+        
+
+            &:hover{
+                border: 1px solid rgba(96, 165, 250, 0.35);
+            }
+
+            &.active .icon{
+                transform: rotate(180deg);
+            }
+
+            .faq-btn{
+                width: 100%;
+                background: none;
+                border: none;
+                color: #e2e8f0;
+                padding: 18px 24px;
+                cursor: pointer;
+
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                font-size: 16px;
+                font-weight: 500;
+
+                .icon{
+                    transition: transform .3s;
+                }
+            }
+
+            .faq-body{
+                max-height: 0px;
+                overflow: hidden;
+                transition: max-height .4s ease;
+
+                .faq-inner{
+                    padding: 0 24px 20px;
+
+                    .faq-divider{
+                        height: 1px;
+                        background-color: rgba(96, 165, 250, 0.1);;
+                        margin-bottom: 20px;
+                    }
+
+                    p{
+                        font-size: 14px;
+                        line-height: 1.6;
+                        color: #7896ab;
+                    }
+                }
+
             }
         }
     }
@@ -968,7 +1102,10 @@ footer{
     padding: 100px 80px;
     display: flex;
     justify-content: center;
-    animation: MoverAbajo .8s ease;
+
+    &.mostrar{
+        animation: MoverAbajo .8s ease forwards;
+    }
 
     .inner{
         max-width: 900px;
@@ -1021,7 +1158,10 @@ footer{
         font-size: 14px;
         line-height: 1.7;
         color: #7896ab;
-        animation: MoverAbajo .8s ease;
+        
+        &.mostrar{
+            animation: MoverAbajo .8s ease;
+        }
     }
 
     .aic-header{
@@ -1029,7 +1169,10 @@ footer{
         padding: 40px 48px;
         margin-bottom: 40px;
         color: #fff;
-        animation: MoverDerecha 1s ease;
+        
+        &.mostrar{
+            animation: MoverDerecha 1s ease;
+        }
 
         h2{
             font-size: clamp(18px, 2.5vw, 26px);
@@ -1044,7 +1187,10 @@ footer{
             font-size: 14px;
             line-height: 1.7;
             color: #7896ab;
-            animation: MoverAbajo .8s ease;
+
+            &.mostrar{
+                animation: MoverAbajo .8s ease;
+            }
         }
     }
 
@@ -1066,7 +1212,10 @@ footer{
             color: #ffffff99;
             background-color: #0b1029;
             border: 1px solid rgba(96, 165, 250, 0.12);
-            animation: MoverIzquierda 1s ease;
+            
+            &.mostrar{
+                animation: MoverIzquierda 1s ease;
+            }
         }
     }
 }
@@ -1144,6 +1293,7 @@ footer{
 
     .tab-panel{
         display: none;
+        
 
         &.active{
             display: block;
@@ -1154,6 +1304,8 @@ footer{
             flex-direction: column;
             gap: 10px;
         }
+
+
 
         .item{
             border-radius: 14px;
@@ -1168,7 +1320,25 @@ footer{
             border: 1px solid rgba(96, 165, 250, 0.12);
             opacity: 0;
             transition: 0.15s;
-            animation: MoverIzquierda .6s ease forwards;
+
+            &.mostrar{
+                animation: MoverIzquierda .6s ease forwards;
+                &:nth-child(1) { animation-delay: 0.1s; }
+                &:nth-child(2) { animation-delay: 0.2s; }
+                &:nth-child(3) { animation-delay: 0.3s; }
+                &:nth-child(4) { animation-delay: 0.4s; }
+                &:nth-child(5) { animation-delay: 0.5s; }
+                &:nth-child(6) { animation-delay: 0.6s; }
+                &:nth-child(7) { animation-delay: 0.7s; }
+                &:nth-child(8) { animation-delay: 0.8s; }
+                &:nth-child(9) { animation-delay: 0.9s; }
+                &:nth-child(10) { animation-delay: 1.1s; }
+                &:nth-child(11) { animation-delay: 1.2s; }
+                &:nth-child(12) { animation-delay: 1.3s; }
+                &:nth-child(13) { animation-delay: 1.5s; }
+                &:nth-child(14) { animation-delay: 1.6s; }
+            }
+            
 
             strong{
                 font-weight: 700;
@@ -1189,20 +1359,6 @@ footer{
             }
         }
 
-        .item:nth-child(1) { animation-delay: 0.1s; }
-        .item:nth-child(2) { animation-delay: 0.2s; }
-        .item:nth-child(3) { animation-delay: 0.3s; }
-        .item:nth-child(4) { animation-delay: 0.4s; }
-        .item:nth-child(5) { animation-delay: 0.5s; }
-        .item:nth-child(6) { animation-delay: 0.6s; }
-        .item:nth-child(7) { animation-delay: 0.7s; }
-        .item:nth-child(8) { animation-delay: 0.8s; }
-        .item:nth-child(9) { animation-delay: 0.9s; }
-        .item:nth-child(10) { animation-delay: 1.1s; }
-        .item:nth-child(11) { animation-delay: 1.2s; }
-        .item:nth-child(12) { animation-delay: 1.3s; }
-        .item:nth-child(13) { animation-delay: 1.5s; }
-        .item:nth-child(14) { animation-delay: 1.6s; }
 
     }
 }

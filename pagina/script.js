@@ -4,19 +4,58 @@ const buttons1 = document.querySelectorAll(".tab-group button[data-tab]");
 const contents = document.querySelectorAll(".tab-panel");
 
 buttons1.forEach(button => {
-    button.addEventListener("click", () =>{
-        buttons1.forEach(b => b.classList.remove("active"));
-        button.classList.add("active");
+  button.addEventListener("click", () =>{
+    buttons1.forEach(b => b.classList.remove("active"));
+    button.classList.add("active");
 
-        contents.forEach(c => c.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
 
-        const tab = button.getAttribute("data-tab");
+    const tab = button.getAttribute("data-tab");
 
-        document.getElementById(tab).classList.add("active");
+    document.getElementById(tab).classList.add("active");
     });
 });
 
 
+//Animaciones Scroll
+
+
+const elementos = document.querySelectorAll(".scroll");
+
+window.addEventListener("scroll", () =>{
+  elementos.forEach(e => {
+    const posicion = e.getBoundingClientRect();
+
+    if(posicion.top < window.innerHeight  && posicion.bottom > 0){
+      e.classList.add("mostrar");
+    } else{
+        e.classList.remove("mostrar");
+    }
+
+  })
+})
+
+
+//Preguntas del FAQ
+
+const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach(item =>{
+  
+  const btn = item.querySelector(".faq-btn");
+  const body = item.querySelector(".faq-body");
+
+  btn.addEventListener("click", () => {
+    item.classList.toggle("active");
+
+    if(item.classList.contains("active")){
+      body.style.maxHeight = body.scrollHeight + "px";
+    }
+    else{
+      body.style.maxHeight = 0;
+    }
+  })
+})
 
 //Next
 
@@ -102,18 +141,18 @@ console.log(buttons2);
 const tablas = document.querySelectorAll(".tabla-grid");
 
 buttons2.forEach(button => {
-    button.addEventListener("click", () =>{
-        buttons2.forEach(b => b.classList.remove("active"));
-        button.classList.add("active");
+  button.addEventListener("click", () =>{
+    buttons2.forEach(b => b.classList.remove("active"));
+    button.classList.add("active");
     
-        tablas.forEach(t => t.classList.remove("active"));
+    tablas.forEach(t => t.classList.remove("active"));
 
-        const tab = button.getAttribute("data-tab");
+    const tab = button.getAttribute("data-tab");
 
-        document.getElementById(tab).classList.add("active")
+    document.getElementById(tab).classList.add("active")
 
-        igualarAlturasPorIndice();
-    });
+    igualarAlturasPorIndice();
+  });
 });
 
 
@@ -127,27 +166,27 @@ const btnNext = document.querySelector(".botones button:last-child");
 let index = 2;
 
 function updateCarousel(){
-    wrappers.forEach(w => w.classList.remove("active"));
-    wrappers[index].classList.add("active");
-    console.log(index)
+  wrappers.forEach(w => w.classList.remove("active"));
+  wrappers[index].classList.add("active");
+  console.log(index)
 }
 
 btnNext.addEventListener("click", () =>{
-    index ++;
+  index ++;
 
-    if(index > wrappers.length-1){
-        index = 0;
-    }
+  if(index > wrappers.length-1){
+    index = 0;
+  }
 
-    updateCarousel();
+  updateCarousel();
 })
 
 btnPrev.addEventListener("click", () =>{
-    index --;
+  index --;
 
-    if(index < 0){
-        index = wrappers.length-1
-    }
+  if(index < 0){
+    index = wrappers.length-1
+  }
 
-    updateCarousel();
+  updateCarousel();
 })
