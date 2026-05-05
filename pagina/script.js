@@ -22,7 +22,7 @@ buttons1.forEach(button => {
 
 const elementos = document.querySelectorAll(".scroll");
 
-window.addEventListener("scroll", () =>{
+function checkScroll() {
   elementos.forEach(e => {
     const posicion = e.getBoundingClientRect();
 
@@ -31,9 +31,30 @@ window.addEventListener("scroll", () =>{
     } else{
         e.classList.remove("mostrar");
     }
-
   })
-})
+}
+
+//ahora se ejecuta cuando vas a esa seccion desde un link tambien
+window.addEventListener("scroll", checkScroll);
+window.addEventListener("load", checkScroll);
+
+
+
+// boton de la navbar y que de desactive cuando apretes un link
+
+const buttons3 = document.getElementById("menuBtn");
+const nav = document.getElementById("nav");
+
+buttons3.addEventListener("click", () => {
+  nav.classList.toggle("active");
+});
+
+document.querySelectorAll("#nav a").forEach(link => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("active");
+  });
+});
+
 
 
 //Preguntas del FAQ
@@ -56,6 +77,20 @@ faqItems.forEach(item =>{
     }
   })
 })
+
+
+// cada vez que cambie la ventana de tamaño que se actualice
+
+window.addEventListener('resize', () => {
+  const faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach(item =>{
+    const body = item.querySelector(".faq-body");
+    if(item.classList.contains("active")){
+        body.style.maxHeight = body.scrollHeight + "px";
+      };
+  })
+});
 
 //Next
 
@@ -158,20 +193,25 @@ buttons2.forEach(button => {
 
 //carousel
 
-
+const WrapperContainer = document.querySelector(".galeria-section .container")
 const wrappers = document.querySelectorAll(".wrapper");
+
 const btnPrev = document.querySelector(".botones button:first-child");
 const btnNext = document.querySelector(".botones button:last-child");
 
 let index = 2;
+let imageWidth = 500;
 
 function updateCarousel(){
   wrappers.forEach(w => w.classList.remove("active"));
   wrappers[index].classList.add("active");
+  
+  
   console.log(index)
 }
 
 btnNext.addEventListener("click", () =>{
+  WrapperContainer.style.transform = `translateX(-500px)`;
   index ++;
 
   if(index > wrappers.length-1){
@@ -182,11 +222,14 @@ btnNext.addEventListener("click", () =>{
 })
 
 btnPrev.addEventListener("click", () =>{
+  WrapperContainer.style.transform = `translateX(500px)`;
   index --;
 
   if(index < 0){
-    index = wrappers.length-1
+    index = wrappers.length-1;
   }
 
+  
   updateCarousel();
+
 })

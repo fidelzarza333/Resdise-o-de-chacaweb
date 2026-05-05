@@ -47,6 +47,7 @@ body{
     .titleheader{
         display: flex;
         align-items: center;
+        justify-content: center;
     }
 
     img{
@@ -76,7 +77,7 @@ body{
 
     &::before{
         content: '';
-        position: absolute;
+        position: relative;
         bottom: 0;
         height: 100px;
         width: 100%;
@@ -91,15 +92,16 @@ body{
 
     .navbar{
         display: flex;
+        justify-content: center;
         align-items: center;
-        justify-content: space-between;
         padding: 7px 20px;
         width: 100%;
         background-color: rgba(0, 0, 0, 0.644);
         backdrop-filter: blur(5px);
-        z-index: 1;
+        z-index: 100;
         font-size: 22px;
         position: fixed;
+        top: 0;
         box-sizing: border-box;
 
         nav ul{
@@ -130,7 +132,6 @@ body{
         display: flex;
         flex-direction: column;
         gap: 15px;
-        
 
         h1{
             display: inline-block;
@@ -198,11 +199,11 @@ body{
 }
 
 .especialidades{
-    padding: 80px 120px;
+    padding: clamp(20px, 6vw, 80px) clamp(30px, 10vw, 120px);
 
     .tarjeta-container{
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
         gap: 40px;
         margin: auto;
         max-width: 1400px;
@@ -298,93 +299,6 @@ body{
         transform: translate(0);
     }
 }
-
-
-
-/*.faq {
-    .pregunta-container{
-        border-radius: 8px;
-        gap: 20px;
-        padding: 30px;
-        margin: 0 auto;
-        color: white;
-        max-width: 1000px;
-
-        h1{
-            margin-bottom: 20px;
-        }
-        
-
-        ul li {
-            summary{
-                display: flex;
-                cursor: pointer;
-                align-items: center;
-                font-size: 20px;
-                justify-content: center;
-                box-sizing: border-box;
-                justify-content: space-between;
-                font-weight: bold;
-                cursor: pointer;
-
-                &:hover{
-                    transition: background 0.2s;
-                }
-
-                &::after{
-                    content: "↓";
-                }
-
-            }
-
-            details{
-                border-radius: 10px;
-                border: 1px solid rgba(96, 165, 250, 0.12);
-                padding: 15px 25px;
-                background-color: rgb(11, 16, 41);
-                margin-block: 10px;
-                color: white;
-                animation: MoverAbajo 1s ease ;
-
-                transition: all 0.15s;
-
-                &:hover{
-                    background-color: rgba(9, 13, 32, 1);
-                    border-color: rgba(96, 165, 250, 0.35);
-                }
-
-            }
-
-            details[open] p{
-                animation: Aparecer .5s ease forwards;
-            }
-
-            p{
-                margin-top: 20px;
-                font-size: 14px;
-                line-height: 1.8;
-                color: #7986a8;
-                opacity: 0;
-            }
-
-            .faq-btn{
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 18px 24px;
-                background: none;
-                border: none;
-                cursor: pointer;
-                font-size: 16px;
-                font-weight: 500;
-                text-align: left;
-                gap: 16px;
-                color: #e2e8f0;
-            }
-        }
-    }
-}*/
 
 @keyframes BotonesAbajo{
     from{
@@ -500,10 +414,12 @@ body{
 
 /*Footer*/
 
-footer{
+.footer-frame{
     width: 100%;
     background: rgb(5, 3, 15);
     border-top: 2px solid rgba(199, 125, 255, 0.15) ;
+    padding: 20px;
+    box-sizing: border-box;
 
     .top{
         padding-top: 20px;
@@ -514,6 +430,10 @@ footer{
         max-width: 1100px;
 
         .brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
             .logo{
                 color: rgba(255, 255, 255, 0.64);
                 text-transform: uppercase;
@@ -529,6 +449,7 @@ footer{
                 line-height: 1.75;
                 letter-spacing: -0.3px;
                 margin-bottom: 20px;
+                text-align: center;
             }
 
             .redes-list{
@@ -576,7 +497,8 @@ footer{
         .col{
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
+            align-items: center;
 
             .title{
                 color: rgba(255, 255, 255, 0.3);
@@ -590,6 +512,7 @@ footer{
             .content ul{
                 display: flex;
                 flex-direction: column;
+                align-items: center;
                 gap: 15px;
                 padding: 0;
 
@@ -607,12 +530,13 @@ footer{
             .list{
                 display: flex;
                 flex-direction: column;
+
                 gap: 20px;
             }
 
             .item{
                 display: flex;
-                align-items: flex-start;
+                
                 gap: 12px;
             }
 
@@ -635,6 +559,7 @@ footer{
             }
 
             .contact-info{
+
                 .label{
                     font-size: 10px;
                     font-weight: 700;
@@ -864,6 +789,10 @@ footer{
             display: grid;
         }
 
+        &.dos-col{
+            grid-template-columns: 1fr 1fr;
+        }
+
         /* Título del año ocupa todo el ancho */
         .tabla-titulo {
             grid-column: 1 / -1;
@@ -937,55 +866,6 @@ footer{
             text-align: center;
             padding: 0.6rem;
             background-color:rgb(123, 91, 160);
-        }
-    }
-}
-
-@media (max-width: 800px) {
-    .horarios {
-        .tabla-grid.dos-col{
-            grid-template-columns: 1fr;
-        }
-
-        .tabla-grid {
-            grid-template-columns: 1fr;
-            background: transparent;
-            gap: 0;
-
-            .tabla-titulo, .horas-totales{
-                border: 1px solid #ddd;
-            }
-
-            .categoria {
-                gap: 0;
-                margin: 12px 0;
-                border: 1px solid #ddd;
-
-                .cat-header, .cat-subheader {
-                    border-bottom: 1px solid #ddd;
-                }
-
-                .cat-subheader:nth-child(2) {
-                    border-right: 1px solid #ddd;
-                }
-
-                .fila {
-                    gap: 0;
-                    border-bottom: 1px solid #ddd;
-
-                    &:last-child {
-                        border-bottom: none;
-                    }
-
-                    div:first-child {
-                        border-right: 1px solid #ddd;
-                    }
-                }
-            }
-
-            .fila.vacia {
-                display: none;
-            }
         }
     }
 }
@@ -1072,6 +952,46 @@ footer{
             padding: 22px;
             border: 1px solid rgba(96, 165, 250, 0.15);
             border-radius: 20px;
+
+            .titulo h3{
+                font-size: 20px;
+                font-weight: 700;
+                margin-bottom: 30px;
+                color: #fff;
+            }
+
+            .cuerpo{
+                line-height: 1.75;
+                font-size: 14px;
+                color: rgb(121, 134, 168)
+            }
+        }
+    }
+}
+
+.perfil{
+    background-color: #060914;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0px 80px 100px;
+
+    .container{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        justify-content: space-between;
+
+        .card{
+            background: rgb(11, 16, 41);
+            padding: 22px;
+            border: 1px solid rgba(96, 165, 250, 0.15);
+            border-radius: 20px;
+            transition: all .3s;
+
+            &:hover{
+                transform: perspective(1000px) rotateX(10deg);
+                border-color: rgba(96, 165, 250, 0.35);;
+            }
 
             .titulo h3{
                 font-size: 20px;
@@ -1411,3 +1331,115 @@ footer{
 }
 
 /* FIN DE SECCION DE chaca.html */
+
+
+@media(min-width: 801px){
+    .navbar{
+        .menuBtn{
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+
+    .navbar{
+        
+        flex-direction: column;
+
+        .logo{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .menuBtn{
+                font-size: 24px;
+                background: black;
+                color: white;
+                border: none;
+                margin: 10px;
+                cursor: pointer;
+                position: fixed;
+                left: 0;
+                z-index: 10000;
+            }
+
+        }
+
+        nav{
+            display: none;
+
+            ul{
+                flex-direction: column;
+
+                &:first-child{
+                    margin-top: 10px;
+                }
+
+                &:last-child{
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+        nav.active{
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    footer{
+        .top{
+            grid-template-columns: 1fr;
+            gap: 42px;
+        }
+    }
+
+    .horarios {
+        .tabla-grid {
+            grid-template-columns: 1fr;
+            background: transparent;
+            gap: 0;
+
+            &.dos-col{
+                grid-template-columns: 1fr;
+            }
+
+            .tabla-titulo, .horas-totales{
+                border: 1px solid #ddd;
+            }
+
+            .categoria {
+                gap: 0;
+                margin: 12px 0;
+                border: 1px solid #ddd;
+
+                .cat-header, .cat-subheader {
+                    border-bottom: 1px solid #ddd;
+                }
+
+                .cat-subheader:nth-child(2) {
+                    border-right: 1px solid #ddd;
+                }
+
+                .fila {
+                    gap: 0;
+                    border-bottom: 1px solid #ddd;
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+
+                    div:first-child {
+                        border-right: 1px solid #ddd;
+                    }
+                }
+            }
+
+            .fila.vacia {
+                display: none;
+            }
+        }
+    }
+}
+
