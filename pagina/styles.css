@@ -203,38 +203,35 @@ body{
 
     .tarjeta-container{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 40px;
         margin: auto;
         max-width: 1400px;
+
+        &.mostrar .tarjeta{
+            animation: RotarCard .5s ease-in-out forwards;
+            animation-delay: calc(var(--delay) * 0.1s);
+
+        }
     }
 
     .tarjeta{
-        background: rgb(11, 16, 41);
-        color: rgb(121, 134, 168);
-        padding: 20px;
-        border: 1px solid rgba(96, 165, 250, 0.5);
-        border-radius: 20px;
         opacity: 0;
-        transition: all 0.35s;
         
-
-        &:hover{
-            border: 1px solid rgba(96, 165, 250, 0.38) ; 
-            transform: perspective(1000px) rotateY(20deg) !important;
-           
-        }
-
-        &.mostrar{
-            animation: RotarCard .5s ease-in-out forwards;
-            &:nth-child(1) { animation-delay: 0.1s; }
-            &:nth-child(2) { animation-delay: 0.2s; }
-            &:nth-child(3) { animation-delay: 0.3s; }
-            &:nth-child(4) { animation-delay: 0.4s; }
-            &:nth-child(5) { animation-delay: 0.5s; }
-        }
-
         
+        .tarjeta-inner{
+            background: rgb(11, 16, 41);
+            color: rgb(121, 134, 168);
+            padding: 20px;
+            border: 1px solid rgba(96, 165, 250, 0.5);
+            border-radius: 20px;
+            transition: transform 0.35s, border-color 0.35s;
+            &:hover{
+                border-color: rgba(96, 165, 250, 0.38) ; 
+                transform: perspective(1000px) rotateY(20deg);
+               
+            }
+        }
     
         .titulo{
             display: flex;
@@ -266,10 +263,13 @@ body{
         .tarjeta-footer{
             display: flex;
             justify-content: space-between;
-            height: 30px;
+            height: 40px;
 
             a{
                 background-color: rgb(21, 165, 232);
+                color: black;
+                font-weight: 500;
+                font-size: 16px;
                 width: 100px;
                 height: 16px;
                 padding: 10px;
@@ -277,10 +277,12 @@ body{
                 border-radius: 10px;
                 text-align: center;
                 transition: all 0.2s ;
+                margin-bottom: 20px;
 
                 &:hover{
                     background-color: rgb(48, 19, 208);
                     border: 1px solid rgba(255, 255, 255, 0.56);
+                    color: white;
                     transform: scale(1.12);
                 }
             }
@@ -329,12 +331,19 @@ body{
         gap: 20px;
         padding: 30px;
 
+        &.mostrar{
+            .faq-item{
+                animation: BotonesAbajo .85s ease forwards;
+                animation-delay: calc(var(--delay) * 0.1s);
+            }
+
+        }
+
         ul{
             padding: 0;
         }
 
         .faq-item{
-            animation: BotonesAbajo .85s ease forwards;
             background-color: rgb(11, 16, 41);
             border: 1px solid rgba(96, 165, 250, 0.12);
             font-weight: bold;
@@ -342,20 +351,7 @@ body{
             margin-block: 10px;
             overflow: hidden;
             opacity: 0;
-
-            &:nth-child(1) { animation-delay: 0.3s; }
-            &:nth-child(2) { animation-delay: 0.6s; }
-            &:nth-child(3) { animation-delay: 0.9s; }
-            &:nth-child(4) { animation-delay: 1.2s; }
-            &:nth-child(5) { animation-delay: 1.5s; }
-            &:nth-child(6) { animation-delay: 1.8s; }
-            &:nth-child(7) { animation-delay: 2.1s; }
-            &:nth-child(8) { animation-delay: 2.4s; }
-            &:nth-child(9) { animation-delay: 2.7s; }
-            &:nth-child(10) { animation-delay: 3.0s; }
-            &:nth-child(11) { animation-delay: 3.3s; }
-        
-        
+            
 
             &:hover{
                 border: 1px solid rgba(96, 165, 250, 0.35);
