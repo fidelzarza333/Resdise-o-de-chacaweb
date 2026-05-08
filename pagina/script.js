@@ -201,41 +201,33 @@ let index = 2;
 let imageWidth = 500;
 let contador = 0;
 
-function updateCarousel(){
+function updateCarousel(contador){
   wrappers.forEach(w => w.classList.remove("active"));
   wrappers[index].classList.add("active");
-
-
-  
-  console.log(index)
+  WrapperContainer.style.transform = `translateX(${-(imageWidth*contador)}px)`;
 }
 
 btnNext.addEventListener("click", () =>{
   index ++;
   contador ++;
-  WrapperContainer.style.transform = `translateX(${-(500*contador)}px)`;
-
+  
   if(index > wrappers.length-1){
     index = 0;
     contador = -2;
-    WrapperContainer.style.transform = `translateX(${-(500*contador)}px)`;
   }
-
-  updateCarousel();
+  
+  updateCarousel(contador);
 })
 
 btnPrev.addEventListener("click", () =>{
   index --;
   contador --;
-  WrapperContainer.style.transform = `translateX(${-(500*contador)}px)`;
 
   if(index < 0){
     index = wrappers.length-1;
     contador = 2;
-    WrapperContainer.style.transform = `translateX(${-(500*contador)}px)`;
   }
-
   
-  updateCarousel();
+  updateCarousel(contador);
 
 })
