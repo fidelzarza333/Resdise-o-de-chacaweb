@@ -9,26 +9,14 @@
 </head>
 <body>
     <header class="header-1">
-        <div class="navbar">
-            <div class="logo">
-                <button class="menuBtn" id="menuBtn">
-                    ☰
-                </button>
-                <a href="../index.html" class="titleheader">
-                    <img src="../imagenes/logo.png" alt="Logo del Chacabuco">
-                    <h4>E.E.S.T. N°6 Chacabuco</h4>
-                </a>
-            </div>
-            <nav id="nav">
-                <ul>
-                    <li><a href="../index.html">Inicio</a></li>
-                    <li><a href="../paginas/chaca.html">Escuela</a></li>
-                    <li><a href="../index.html#especialidad">Especialidades</a></li>
-                    <li><a href="../index.html#faq">FAQ</a></li>
-                    <li><a href="#footer" class="btn-1">Contactenos</a></li>
-                </ul>
-            </nav>
-        </div>
+        <div class="navbar" id="navbar"></div>
+        <script>
+            fetch("/pagina/componentes/navbar.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("navbar").innerHTML = data;
+            });
+        </script>
         
         <div class="header-txt">
             <h1>Informática</h1>
@@ -294,7 +282,15 @@
         </div>
     </section>
 
-    <section class="salida"></section>
+    <div class="footer" id="footer"></div>
+    <script>
+        fetch("/pagina/componentes/footer.html")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+
     <script src="../script.js"></script>
 </body>
 </html>

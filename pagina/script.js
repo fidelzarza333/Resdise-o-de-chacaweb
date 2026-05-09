@@ -38,21 +38,17 @@ window.addEventListener("load", checkScroll);
 
 
 
-// boton de la navbar y que de desactive cuando apretes un link
+// navbar y que de desactive cuando apretes un link
 
-const buttons3 = document.getElementById("menuBtn");
-const nav = document.getElementById("nav");
+document.addEventListener("click", (e) => {
+    if (e.target.closest("#menuBtn")) {
+        document.getElementById("nav").classList.toggle("active");
+    }
 
-buttons3.addEventListener("click", () => {
-  nav.classList.toggle("active");
+    if (e.target.closest("#nav a")) {
+        document.getElementById("nav").classList.remove("active");
+    }
 });
-
-document.querySelectorAll("#nav a").forEach(link => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("active");
-  });
-});
-
 
 
 //Preguntas del FAQ
