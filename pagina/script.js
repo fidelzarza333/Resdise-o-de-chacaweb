@@ -26,7 +26,7 @@ function checkScroll() {
   elementos.forEach(e => {
     const posicion = e.getBoundingClientRect();
 
-    if(posicion.top < window.innerHeight  && posicion.bottom > 0){
+    if(posicion.top < window.innerHeight-100  && posicion.bottom > 0){
       e.classList.add("mostrar");
     }
   })
@@ -161,6 +161,7 @@ window.addEventListener('load', () => {
 
 window.addEventListener('resize', () => {
   igualarAlturasPorIndice();
+  updateCarousel(contador);
 });
 
 
@@ -194,13 +195,12 @@ const btnPrev = document.querySelector(".botones button:first-child");
 const btnNext = document.querySelector(".botones button:last-child");
 
 let index = 2;
-let imageWidth = 500;
 let contador = 0;
 
 function updateCarousel(contador){
   wrappers.forEach(w => w.classList.remove("active"));
   wrappers[index].classList.add("active");
-  WrapperContainer.style.transform = `translateX(${-(imageWidth*contador)}px)`;
+  WrapperContainer.style.transform = `translateX(${-(((document.getElementById("foto")).offsetWidth+50)*contador)}px)`;
 }
 
 btnNext.addEventListener("click", () =>{
