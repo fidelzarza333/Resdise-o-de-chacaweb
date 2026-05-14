@@ -13,6 +13,8 @@ buttons1.forEach(button => {
     const tab = button.getAttribute("data-tab");
 
     document.getElementById(tab).classList.add("active");
+
+    checkScroll();
     });
 });
 
@@ -76,6 +78,9 @@ faqItems.forEach(item =>{
 // cada vez que cambie la ventana de tamaño que se actualice
 
 window.addEventListener('resize', () => {
+  igualarAlturasPorIndice();
+  updateCarousel(contador);
+
   const faqItems = document.querySelectorAll(".faq-item");
 
   faqItems.forEach(item =>{
@@ -159,11 +164,6 @@ window.addEventListener('load', () => {
   igualarAlturasPorIndice();
 });
 
-window.addEventListener('resize', () => {
-  igualarAlturasPorIndice();
-  updateCarousel(contador);
-});
-
 
 
 const buttons2 = document.querySelectorAll(".btn-container button[data-tab]");
@@ -200,7 +200,11 @@ let contador = 0;
 function updateCarousel(contador){
   wrappers.forEach(w => w.classList.remove("active"));
   wrappers[index].classList.add("active");
-  WrapperContainer.style.transform = `translateX(${-(((document.getElementById("foto")).offsetWidth+50)*contador)}px)`;
+  WrapperContainer.style.transform = `translateX(${-((wrappers[index].offsetWidth+50)*contador)}px)`;
+  // no funciona cuando usas maximize y restore
+  console.log((wrappers[index].offsetWidth+50)*contador);
+
+  // WrapperContainer.style.transform = `translateX(${-(21*contador)}%)`;
 }
 
 btnNext.addEventListener("click", () =>{

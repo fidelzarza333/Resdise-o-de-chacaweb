@@ -52,7 +52,7 @@ body{
     }
 
     img{
-        width: 100px;
+        width: 75px;
         height: 50px;
     }
 }
@@ -98,7 +98,7 @@ body{
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 7px 20px;
+        padding: 7px 10px 7px 0;
         width: 100%;
         background-color: rgba(0, 0, 0, 0.644);
         backdrop-filter: blur(5px);
@@ -110,7 +110,7 @@ body{
 
         nav ul{
             display: flex;
-            gap: 25px;
+            gap: 20px;
             align-items: center;
 
             .btn-1{
@@ -129,19 +129,15 @@ body{
         display: flex;
         flex-direction: column;
         gap: 30px;
-        /*padding: 0 clamp(25px, 5vh, 50px) clamp(25px, 5vw, 50px);*/
         padding: 50px 100px 0 70px;
 
         h1{
-
             display: inline-block;
             padding: 5px;
-            /*font-size: clamp(54px, 12vw, 76px);*/
             font-size: 50px;
             font-weight: 800;
             margin-top: 20px;
             color: #e8eaf6;
-            
         }
 
         p{
@@ -176,7 +172,7 @@ body{
 
     .tarjeta-container{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
         gap: 40px;
         margin: auto;
         max-width: 1400px;
@@ -567,60 +563,6 @@ body{
 
 
 /* Especialidades (basicamente, electro.html) */
-/*
-.header-1{
-    background-color: red;
-    color: white;
-    min-height: 87vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.473)), url('imagenes/fondo.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-
-    .navbar{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 7px 20px;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.644);
-        backdrop-filter: blur(5px);
-        z-index: 1;
-        font-size: 22px;
-        position: fixed;
-        box-sizing: border-box;
-
-        nav ul{
-            display: flex;
-            gap: 25px;
-            align-items: center;
-        }
-    }
-
-    .header-txt{
-        position: absolute;
-        left: 0%;
-        font-size: 18px;
-        transform: translateY(70%); 
-        max-width: 740px;
-        margin: 30px;
-
-        h1{
-            padding-bottom: 17px;
-        }
-    }
-
-    .btn-1{
-        background-color: blue;
-        color: white;
-        border: none;
-        padding: 7px;
-        font-size: 22px;
-    }
-}
-
-*/
 
 .descripcion{
     background-color: rgb(5, 9, 22);
@@ -892,11 +834,11 @@ body{
     }
 
     to{
-        height: 260px;
+        height: auto;
+        max-height: 260px;
         opacity: 1;
     }
 }
-
 
 .galeria-section{
     background: rgb(11, 16, 41);
@@ -925,7 +867,6 @@ body{
 
         .wrapper{
             width: clamp(260px, 40vw, 460px);
-            height: clamp(160px, 40vw, 260px);
             border-radius: 13px;
             overflow: hidden;
             position: relative;
@@ -982,7 +923,7 @@ body{
     }
 
     .instrumentos-container{
-        margin: 50px 100px;
+        margin: clamp(25px, 5vw, 50px) clamp(50px, 7vw, 100px);
         display: flex;
         flex-direction: column;
         gap: 50px;
@@ -998,10 +939,9 @@ body{
 
             img{
                 width: 100%;
-                height: 270px;
+                height: auto;
                 border-radius: 20px;
                 overflow: hidden;
-
             }
 
             .instrumento-content{
@@ -1040,7 +980,7 @@ body{
 
     .container{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
         gap: 25px;
         justify-content: space-between;
         margin-top: 20px;
@@ -1181,7 +1121,7 @@ body{
 
     .normas-grid{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
         gap: 15px;
         margin-top: 24px;
         
@@ -1517,12 +1457,6 @@ section{
         }
     }
 
-    .especialidades{
-        .tarjeta-container{
-            grid-template-columns: 1fr;
-        }
-    }
-
     .footer{
         .top{
             grid-template-columns: 1fr;
@@ -1550,10 +1484,6 @@ section{
             p{
                 text-align: left;
             }
-        }
-
-        .normas-grid{
-            grid-template-columns: 1fr;
         }
     }
 
@@ -1616,6 +1546,8 @@ section{
 
     .instrumentos-section{
         .instrumentos-container {
+            margin: 25px clamp(10px, 6vw, 50px);
+
             .instrumento{
                 grid-template-columns: 1fr;
             }
