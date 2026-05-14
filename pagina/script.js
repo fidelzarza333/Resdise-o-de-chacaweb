@@ -200,12 +200,12 @@ let contador = 0;
 function updateCarousel(contador){
   wrappers.forEach(w => w.classList.remove("active"));
   wrappers[index].classList.add("active");
-  WrapperContainer.style.transform = `translateX(${-((wrappers[index].offsetWidth+50)*contador)}px)`;
-  // no funciona cuando usas maximize y restore
-  console.log((wrappers[index].offsetWidth+50)*contador);
-
-  // WrapperContainer.style.transform = `translateX(${-(21*contador)}%)`;
+  // WrapperContainer.style.transform = `translateX(${-((wrappers[index].offsetWidth+50)*contador)}px)`;
+  
+  // se rompe si no son 5 imagenes, pero el restore y maximize funciona bien, habra que ver el css
+  WrapperContainer.style.transform = `translateX(${-((20.5*contador))}%)`;
 }
+
 
 btnNext.addEventListener("click", () =>{
   index ++;

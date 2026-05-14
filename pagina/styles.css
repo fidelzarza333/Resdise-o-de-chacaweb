@@ -834,8 +834,6 @@ body{
     }
 
     to{
-        height: auto;
-        max-height: 260px;
         opacity: 1;
     }
 }
@@ -867,6 +865,7 @@ body{
 
         .wrapper{
             width: clamp(260px, 40vw, 460px);
+            height: clamp(160px, 30vw, 260px);
             border-radius: 13px;
             overflow: hidden;
             position: relative;
