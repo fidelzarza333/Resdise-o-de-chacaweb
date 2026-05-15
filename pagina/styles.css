@@ -96,9 +96,8 @@ body{
 
     .navbar{
         display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 7px 10px 7px 0;
+        align-items: center;   
+        justify-content: space-between;
         width: 100%;
         background-color: rgba(0, 0, 0, 0.644);
         backdrop-filter: blur(5px);
@@ -129,12 +128,12 @@ body{
         display: flex;
         flex-direction: column;
         gap: 30px;
-        padding: 50px 100px 0 70px;
+        padding: 50px 100px 50px 70px;
 
         h1{
             display: inline-block;
             padding: 5px;
-            font-size: 50px;
+            font-size: clamp(40px, 7vw, 56px);
             font-weight: 800;
             margin-top: 20px;
             color: #e8eaf6;
@@ -152,6 +151,17 @@ body{
         .btn-info{
             width: 170px;
             height: 60px;
+            font-size: 22px;
+            font-weight: 700;
+            background-color: rgba(11, 16, 41, 1);
+            color: rgb(121, 134, 168);
+            border: 1px solid rgba(96, 165, 250, 0.5);
+            cursor: pointer;
+            transition: transform 0.35s, border-color 0.35s;
+            &:hover{
+                color: rgb(198, 211, 244);
+                transform: scale(1.12);
+            }
         }
     }
 }
@@ -181,7 +191,6 @@ body{
         &.mostrar .tarjeta{
             animation: RotarCard .8s ease-in-out forwards;
             animation-delay: calc(var(--delay) * 0.2s);
-
         }
     }
 
@@ -198,7 +207,6 @@ body{
             &:hover{
                 border-color: rgba(96, 165, 250, 0.38) ; 
                 transform: perspective(1000px) rotateY(20deg);
-               
             }
         }
     
@@ -1403,6 +1411,8 @@ section{
 
 @media(min-width: 801px){
     .navbar{
+        padding: 7px 10px 7px 0;
+
         .menuBtn{
             display: none;
         }
@@ -1412,8 +1422,10 @@ section{
 @media (max-width: 800px) {
 
     .navbar{
+        display:none;
         
         flex-direction: column;
+        padding: 7px 10px;
 
         .logo{
             display: flex;
@@ -1431,13 +1443,13 @@ section{
                 left: 0;
                 z-index: 10000;
             }
-
         }
 
         nav{
             display: none;
 
             ul{
+                padding: 0;
                 flex-direction: column;
 
                 &:first-child{
