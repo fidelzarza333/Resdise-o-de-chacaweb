@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../imagenes/faviconchaca.ico" type="image/x-icon">
+    <title>Electromecánica</title>
+</head>
+<body>
+    <header class="header">
+        <div class="navbar" id="navbar"></div>
+        <script>
+            fetch("/pagina/componentes/navbar.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("navbar").innerHTML = data;
+            });
+        </script>
+
+        <video autoplay muted loop playsinline class="bg-video">
+            <source src="../videos/video2.mp4" type="video/mp4">
+        </video>
+        
+        <div class="header-txt">
+            <h1>Electromecanica</h1>
+            <p>
+                Somos una escuela técnica pública y gratuita ubicada en Morón, orientada a la formación académica y profesional de nuestros estudiantes
+            </p>
+            </div>
+        </div>
+    </header>
+
+    <section class="descripcion">
+        <div class="desc-inner scroll">
+            <div class="desc-left">
+                <div class="section-eyebrow">Sobre la especiabilidad</div>
+                <h2>Tecnico en <br> Electromecánica</h2>
+                <div class="desc-divider"></div>
+            </div>
+
+            <div class="desc-right">
+                <p>
+                    Tecnicos profesionales capacitados en el manejo, instalación y mantenimineto de sistemas eléctricos y mecánicos utilizados en la industria, integrando conocimientos de electricidad, mecánica, automatización y control industrial.
+                </p>
+                <p>
+                    Los estudiantes aprenderan a trabajar con máquinas, motores, circuitos eléctricos y herramientas técnicasm desarrollando habilidades prácticas  para resolver problemas y optimizar procesos productivos. La formación brinda una salida laboral amplia en industrias, fábricas, servicios técnicos y distintos entornos tecnológicos.
+                <div class="desc-stats">
+                    <div class="desc-item">
+                        <div class="stat-num">4</div>
+                        <div class="stat-label">Años de cursada</div>
+                    </div>
+
+                    <div class="desc-item">
+                        <div class="stat-num">2</div>
+                        <div class="stat-label">Turnos</div>
+                    </div>
+
+                    <div class="desc-item">
+                        <div class="stat-num">+12</div>
+                        <div class="stat-label">Materias</div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="horarios">
+        <div class="btn-container scroll">
+            <button data-tab="anio-4" class="active">4to Año</button>
+            <button data-tab="anio-5">5to Año</button>
+            <button data-tab="anio-6">6to Año</button>
+            <button data-tab="anio-7">7to Año</button>
+        </div>
+        <div class="tabla-container scroll">
+
+            <div class="tabla-grid active" id="anio-4">
+                <div class="tabla-titulo">Cuarto año</div>
+
+                <div class="categoria">
+                    <div class="cat-header">Formacion General</div>
+                    <div class="cat-subheader">Materia</div><div class="cat-subheader">CHT</div>
+                    <div class="fila"><div>Literatura</div><div>72</div></div>
+                    <div class="fila"><div>Ingles</div><div>72</div></div>
+                    <div class="fila"><div>Educacion Fisica</div><div>72</div></div>
+                    <div class="fila"><div>Salud y Adolescencia</div><div>72</div></div>
+                    <div class="fila"><div>Historia</div><div>72</div></div>
+                    <div class="fila"><div>Geografia</div><div>72</div></div>
+                    <div class="fila total"><div>Total de Horas Reloj</div><div>432</div></div>
+                </div>
+
+                <div class="categoria">
+                    <div class="cat-header">Formacion Cientifico Tecnologico</div>
+                    <div class="cat-subheader">Materia</div><div class="cat-subheader">CHT</div>
+                    <div class="fila"><div>Matematica-Ciclo superior</div><div>144</div></div>
+                    <div class="fila"><div>Fisica</div><div>108</div></div>
+                    <div class="fila"><div>Quimica</div><div>72</div></div>
+                    <div class="fila"><div>Conocimiento de los Materiales</div><div>72</div></div>
+                    <div class="fila total"><div>Total de Horas Reloj</div><div>396</div></div>
+                </div>
+
+                <div class="categoria">
+                    <div class="cat-header">Formacion Tecnica Especifica</div>
+                    <div class="cat-subheader">Materia</div><div class="cat-subheader">CHT</div>
+                    <div class="fila"><div>Dibujo Tecnologico</div><div>72</div></div>
+                    <div class="fila"><div>Maquinarias Electricas y Automatismos</div><div>144</div></div>
+                    <div class="fila"><div>Diseño y Procesamiento Mecanico</div><div>144</div></div>
+                    <div class="fila"><div>Instalaciones y Aplicaciones de la Energia</div><div>144</div></div>
+                    <div class="fila total"><div>Total de Horas Reloj</div><div>504</div></div>
+                </div>
+
+                <div class="horas-totales">Horas Totales: 1332</div>
+                </div>
+
+                <div class="tabla-grid" id="anio-5">
+                <div class="tabla-titulo">Quinto año</div>
+
+                <div class="categoria">
+                    <div class="cat-header">Formacion General</div>
+                    <div class="cat-subheader">Materia</div><div class="cat-subheader">CHT</div>
+                    <div class="fila"><div>Literatura</div><div>72</div></div>
+                    <div class="fila"><div>Ingles</div><div>72</div></div>
+                    <div class="fila"><div>Educacion Fisica</div><div>72</div></div>
+                    <div class="fila"><div>Politica y Ciudadania</div><div>72</div></div>
+                    <div class="fila"><div>Historia</div><div>72</div></div>
+                    <div class="fila"><div>Geografia</div><div>72</div></div>
+                    <div class="fila total"><div>Total de Horas Reloj</div><div>432</div></div>
+                </div>
+
+                <div class="categoria">
+                    <div class="cat-header">Formacion Cientifico Tecnologico</div>
+                    <div class="cat-subheader">Materia</div><div class="cat-subheader">CHT</div>
+                    <div class="fila"><div>Analisis Matematico</div><div>144</div></div>
+                    <div class="fila"><div>Fisica Aplicada</div><div>108</div></div>
+                    <div class="fila"><div>Electrotecnia 1</div><div>108</div></div>
+                    <div class="fila"><div>Resistencia y Ensayos de los Materiales</div><div>108</div></div>
+                    <div class="fila total"><div>Total de Horas Reloj</div><div>468</div></div>
+                </div>
+
+                <div class="categoria">
+                    <div class="cat-header">Formacion Tecnica Especifica</div>
+                    <div class="cat-subheader">Materia</div><div class="cat-subheader">CHT</div>
+                    <div class="fila"><div>Maquinarias Electricas y Automatismos</div><div>144</div></div>
+                    <div class="fila"><div>Diseño y Procesamiento Mecanico</div><div>144</div></div>
+                    <div class="fila"><div>Instalaciones y Aplicaciones de la Energia</div><div>144</div></div>
+                    <div class="fila total"><div>Total de Horas Reloj</div><div>432</div></div>
+                </div>
+
+                <div class="horas-totales">Horas Totales: 1332</div>
+            </div>
+
+            <div class="tabla-grid" id="anio-6">
+                <div class="tabla-titulo">Sexto año</div>
+
+                <div class="categoria">
+                    <div class="cat-header">Formacion General</div>
+                    <div class="cat-subheader">Materia</div><div class="cat-subheader">CHT</div>
+                    <div class="fila"><div>Literatura</div><div>72</div></div>
+                    <div class="fila"><div>Ingles</div><div>72</div></div>
+                    <div class="fila"><div>Educacion Fisica</div><div>72</div></div>
+                    <div class="fila"><div>Filosofia</div><div>72</div></div>
+                    <div class="fila"><div>Arte</div><div>72</div></div>
+                    <div class="fila total"><div>Total de Horas Reloj</div><div>360</div></div>
+                </div>
+
+                <div class="categoria">
+                    <div class="cat-header">Formacion Cientifico Tecnologico</div>
+                    <div class="cat-subheader">Materia</div><div class="cat-subheader">CHT</div>
+                    <div class="fila"><div>Matematica Aplicada</div><div>72</div></div>
+                    <div class="fila"><div>Termodinamica y Maquinas Termicas</div><div>108</div></div>
+                    <div class="fila"><div>Electrotecnia 2</div><div>108</div></div>
+                    <div class="fila"><div>Sistemas Mecanicos</div><div>108</div></div>
+                    <div class="fila"><div>Derechos del Trabajo</div><div>72</div></div>
+                    <div class="fila total"><div>Total de Horas Reloj</div><div>468</div></div>
+                </div>
+
+                <div class="categoria">
+                    <div class="cat-header">Formacion Tecnica Especifica</div>
+                    <div class="cat-subheader">Materia</div><div class="cat-subheader">CHT</div>
+                    <div class="fila"><div>Laboratorio de Mediciones Electricas</div><div>72</div></div>
+                    <div class="fila"><div>Maquinarias Electricas y Automatismos</div><div>144</div></div>
+                    <div class="fila"><div>Diseño y Procesamiento Mecanico</div><div>144</div></div>
+                    <div class="fila"><div>Instalaciones y Aplicaciones de la Energia</div><div>144</div></div>
+                    <div class="fila total"><div>Total de Horas Reloj</div><div>504</div></div>
+                </div>
+
+                <div class="horas-totales">Horas Totales: 1332</div>
+            </div>
+
+            <div class="tabla-grid" id="anio-7">
+                <div class="tabla-titulo">Septimo año</div>
+
+                <div class="categoria">
+                    <div class="cat-header">Practicas Profesionalizantes</div>
+                    <div class="cat-subheader">Materia</div><div class="cat-subheader">CHT</div>
+                    <div class="fila"><div>Practicas</div><div>200</div></div>
+                    <div class="fila total"><div>Total de Horas Reloj</div><div>200</div></div>
+                </div>
+
+                <div class="categoria">
+                    <div class="cat-header">Formacion Cientifico Tecnologico</div>
+                    <div class="cat-subheader">Materia</div><div class="cat-subheader">CHT</div>
+                    <div class="fila"><div>Emprendimientos Productivos y Desarrollo Local</div><div>72</div></div>
+                    <div class="fila"><div>Electronica Industrial</div><div>72</div></div>
+                    <div class="fila"><div>Seguridad, Higiene y Proteccion Ambiental</div><div>72</div></div>
+                    <div class="fila"><div>Maquinas Electricas</div><div>108</div></div>
+                    <div class="fila"><div>Sistemas Mecanicos</div><div>108</div></div>
+                    <div class="fila total"><div>Total de Horas Reloj</div><div>432</div></div>
+                </div>
+
+                <div class="categoria">
+                    <div class="cat-header">Formacion Tecnica Especifica</div>
+                    <div class="cat-subheader">Materia</div><div class="cat-subheader">CHT</div>
+                    <div class="fila"><div>Laboratorio de Metrologia y Control de Calidad</div><div>72</div></div>
+                    <div class="fila"><div>Mantenimiento y Montaje Electromecanico</div><div>144</div></div>
+                    <div class="fila"><div>Proyecto y Diseño Electromecanico</div><div>144</div></div>
+                    <div class="fila"><div>Proyecto y Diseño de Instalaciones Electricas</div><div>144</div></div>
+                    <div class="fila total"><div>Total de Horas Reloj</div><div>504</div></div>
+                </div>
+
+                <div class="horas-totales">Horas Totales: 1136</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="galeria-section">
+        <div class="container scroll">
+            <div class="wrapper">
+                <div class="wrapper-inner">
+                    <img src="../imagenes/fondo.png" alt="1">
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="wrapper-inner">
+                    <img src="../imagenes/logo.png" alt="2">
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="wrapper-inner active">
+                    <img src="../imagenes/torno.png" alt="3">
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="wrapper-inner">
+                    <img src="../imagenes/torno.png" alt="4">
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="wrapper-inner">
+                    <img src="../imagenes/torno.png" alt="5">
+                </div>
+            </div>
+        </div>
+        <div class="botones">
+            <button><</button>
+            <button>></button>
+        </div>
+    </section>
+
+    <section class="instrumentos-section">
+        <div class="info">
+            <div class="section-eyebrow">Equipo</div>
+            <h2 class="section-title">Equipo que usan nuestros estudiantes</h2>
+        </div>
+        <div class="instrumentos-container scroll">
+            <div class="instrumento" style="--animation:MoverDerecha; --delay:0">
+                <img src="../imagenes/torno.png" alt="Torno">
+                <div class="instrumento-content">
+                    <h3>Torno</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, voluptates. Ipsum voluptate dolor hic in placeat minima nulla aliquid vitae architecto, alias ex dicta nisi quo accusantium velit corporis facilis?</p>
+                </div>
+            </div>
+
+            <div class="instrumento" style="--animation:MoverIzquierda; --delay:1">
+                <div class="instrumento-content">
+                    <h3>Torno</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, voluptates. Ipsum voluptate dolor hic in placeat minima nulla aliquid vitae architecto, alias ex dicta nisi quo accusantium velit corporis facilis?</p>
+                </div>
+                <img src="../imagenes/torno.png" alt="Torno">
+            </div>
+
+            <div class="instrumento" style="--animation:MoverDerecha; --delay:2">
+                <img src="../imagenes/torno.png" alt="Torno">
+                <div class="instrumento-content">
+                    <h3>Torno</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, voluptates. Ipsum voluptate dolor hic in placeat minima nulla aliquid vitae architecto, alias ex dicta nisi quo accusantium velit corporis facilis?</p>
+                </div>
+            </div>
+
+            <div class="instrumento" style="--animation:MoverIzquierda; --delay:3">
+                <div class="instrumento-content">
+                    <h3>Torno</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, voluptates. Ipsum voluptate dolor hic in placeat minima nulla aliquid vitae architecto, alias ex dicta nisi quo accusantium velit corporis facilis?</p>
+                </div>
+                <img src="../imagenes/torno.png" alt="Torno">
+            </div>
+
+            <div class="instrumento" style="--animation:MoverDerecha; --delay:4">
+                <img src="../imagenes/torno.png" alt="Torno">
+                <div class="instrumento-content">
+                    <h3>Torno</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, voluptates. Ipsum voluptate dolor hic in placeat minima nulla aliquid vitae architecto, alias ex dicta nisi quo accusantium velit corporis facilis?</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <section class="perfil">
+        <div class="info">
+            <div class="section-eyebrow">Perfil del egresado</div>
+            <h2 class="section-title">¿Que vas a aprender?</h2>
+        </div>
+        <div class="container">
+            <div class="card">
+                <div class="titulo">
+                    <h3>sas</h3>
+                </div>
+                <div class="cuerpo">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere explicabo eum dolores quo sit sapiente eaque a illum qui et voluptate odio, unde, modi minima fugiat saepe. Eveniet, fuga voluptas?</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="titulo">
+                    <h3>sas</h3>
+                </div>
+                <div class="cuerpo">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere explicabo eum dolores quo sit sapiente eaque a illum qui et voluptate odio, unde, modi minima fugiat saepe. Eveniet, fuga voluptas?</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="titulo">
+                    <h3>sas</h3>
+                </div>
+                <div class="cuerpo">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere explicabo eum dolores quo sit sapiente eaque a illum qui et voluptate odio, unde, modi minima fugiat saepe. Eveniet, fuga voluptas?</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="titulo">
+                    <h3>sas</h3>
+                </div>
+                <div class="cuerpo">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere explicabo eum dolores quo sit sapiente eaque a illum qui et voluptate odio, unde, modi minima fugiat saepe. Eveniet, fuga voluptas?</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="titulo">
+                    <h3>sas</h3>
+                </div>
+                <div class="cuerpo">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere explicabo eum dolores quo sit sapiente eaque a illum qui et voluptate odio, unde, modi minima fugiat saepe. Eveniet, fuga voluptas?</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="titulo">
+                    <h3>sas</h3>
+                </div>
+                <div class="cuerpo">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere explicabo eum dolores quo sit sapiente eaque a illum qui et voluptate odio, unde, modi minima fugiat saepe. Eveniet, fuga voluptas?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer" id="footer"></div>
+    <script>
+        fetch("/pagina/componentes/footer.html")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+
+    <script src="../script.js"></script>
+</body>
+</html>
