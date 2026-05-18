@@ -1,5 +1,10 @@
 console.log("tumadre")
 
+function SaberMas() {
+    window.location.href = "#especialidad";
+}
+
+
 const buttons1 = document.querySelectorAll(".tab-group button[data-tab]");
 const contents = document.querySelectorAll(".tab-panel");
 
@@ -189,45 +194,47 @@ buttons2.forEach(button => {
 //carousel
 
 const WrapperContainer = document.querySelector(".galeria-section .container")
-const wrappers = document.querySelectorAll(".wrapper");
+const wrappers = document.querySelectorAll(".wrapper-inner");
 
 const btnPrev = document.querySelector(".botones button:first-child");
 const btnNext = document.querySelector(".botones button:last-child");
 
-let index = 2;
-let contador = 0;
+const mitad = Math.floor(wrappers.length / 2);
+let index = mitad;
 
-function updateCarousel(contador){
+function obtenerContador() {
+  return index-mitad;
+}
+
+function updateCarousel(){
   wrappers.forEach(w => w.classList.remove("active"));
   wrappers[index].classList.add("active");
-  // WrapperContainer.style.transform = `translateX(${-((wrappers[index].offsetWidth+50)*contador)}px)`;
+
+  const contador = obtenerContador();
+  WrapperContainer.style.transform = `translateX(${-((wrappers[index].offsetWidth+50)*contador)}px)`;
   
-  // se rompe si no son 5 imagenes, pero el restore y maximize funciona bien, habra que ver el css
-  WrapperContainer.style.transform = `translateX(${-((20.5*contador))}%)`;
+  // se rompe si no son inpares
+  //WrapperContainer.style.transform = `translateX(${-((20.5*contador))}%)`;
 }
 
 
 btnNext.addEventListener("click", () =>{
   index ++;
-  contador ++;
   
   if(index > wrappers.length-1){
     index = 0;
-    contador = -2;
   }
   
-  updateCarousel(contador);
+  updateCarousel();
 })
 
 btnPrev.addEventListener("click", () =>{
   index --;
-  contador --;
 
   if(index < 0){
     index = wrappers.length-1;
-    contador = 2;
   }
   
-  updateCarousel(contador);
+  updateCarousel();
 
 })

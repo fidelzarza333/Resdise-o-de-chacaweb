@@ -11,10 +11,15 @@ html{
     text-decoration: none;
 }
 
+html, body{
+    overflow-x: hidden;
+}
+
 body{
     /*background-color: rgb(1, 1, 10);*/
     /*background-color: aqua;*/
     /*background-color: rgb(14, 11, 31);*/
+    
     background-color: #060914;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
@@ -64,34 +69,48 @@ body{
     color: white;
     width: 100%;
     min-height: 85vh;
-
-    background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.973) 0%,
-        rgba(0, 0, 0, 0.473) 50%,
-        transparent 100%
-    ), url('imagenes/fondo.png');
-
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
     position: relative;
     margin-top: 64px;
+    
+    &::after{
+        content: '';
+        position: absolute;
+        inset: 0;
+        
+        background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.973) 0%,
+            rgba(0, 0, 0, 0.473) 50%,
+            transparent 100%
+        );
+
+        z-index: 1;
+    }
 
     &::before{
         content: '';
-        position: relative;
+        position: absolute;
+        z-index: 1;
         bottom: 0;
-        height: 100px;
+        height: 200px;
         width: 100%;
-        background-color: yellow;
         background: linear-gradient(
             to top,
             rgba(0, 0, 0, 0.773) 0%,
             rgba(0, 0, 0, 0.373) 50%,
             transparent 100%
         );
+    }
+
+    .bg-video{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+        filter: brightness(.88);
     }
 
     .navbar{
@@ -101,7 +120,7 @@ body{
         width: 100%;
         background-color: rgba(0, 0, 0, 0.644);
         backdrop-filter: blur(5px);
-        z-index: 100;
+        z-index: 10000;
         font-size: 22px;
         position: fixed;
         top: 0;
@@ -123,12 +142,14 @@ body{
     }
 
     .header-txt{
+        position: relative;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         max-width: 600px;
+        z-index: 2;
         display: flex;
         flex-direction: column;
         gap: 30px;
-        padding: 50px 100px 50px 70px;
+        padding: 120px 5vw 0;
 
         h1{
             display: inline-block;
@@ -151,16 +172,17 @@ body{
         .btn-info{
             width: 170px;
             height: 60px;
+            margin-bottom: 20px;
             font-size: 22px;
             font-weight: 700;
             background-color: rgba(11, 16, 41, 1);
             color: rgb(121, 134, 168);
             border: 1px solid rgba(96, 165, 250, 0.5);
             cursor: pointer;
-            transition: transform 0.35s, border-color 0.35s;
+            transition: transform 0.25s, border-color 0.35s;
             &:hover{
                 color: rgb(198, 211, 244);
-                transform: scale(1.12);
+                transform: scale(1.08);
             }
         }
     }
@@ -182,7 +204,7 @@ body{
 
     .tarjeta-container{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
         gap: 40px;
         margin: auto;
         max-width: 1400px;
@@ -198,6 +220,12 @@ body{
         opacity: 0;
         
         .tarjeta-inner{
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 
+            5px 5px 10px rgba(87, 41, 211, 0.1),
+            10px 10px 20px rgba(87, 41, 211, 0.2);
             background: rgb(11, 16, 41);
             color: rgb(121, 134, 168);
             padding: 20px;
@@ -231,6 +259,7 @@ body{
 
             p{
                 font-size: 18px;
+                color: rgba(120, 150, 171, 0.87);
                 padding-top: 10px;
                 width: 100%;
                 letter-spacing: 0.3px;
@@ -325,6 +354,7 @@ body{
         }
 
         .faq-item{
+            box-shadow: 0px 0px 4px rgba(87, 41, 211, 0.2);;
             background-color: rgb(11, 16, 41);
             border: 1px solid rgba(96, 165, 250, 0.12);
             font-weight: bold;
@@ -422,7 +452,7 @@ body{
 
             .logo-desc{
                 color: rgba(255, 255, 255, 0.6);
-                font-size: 12px;
+                font-size: 13px;
                 max-width: 260px;
                 line-height: 1.75;
                 letter-spacing: -0.3px;
@@ -872,25 +902,30 @@ body{
         }
 
         .wrapper{
+            opacity: 1;
             width: clamp(260px, 40vw, 460px);
             height: clamp(160px, 30vw, 260px);
-            border-radius: 13px;
-            overflow: hidden;
-            position: relative;
-            transition: all 0.15s;
-
-            transform: scale(0.7);
-            opacity: 0.5;
-            
-            &.active{
-                transform: scale(1);
-                opacity: 1;
-            }
-            
-            img{
-                height: 100%;
+            .wrapper-inner{
                 width: 100%;
-                object-fit: cover;
+                height: 100%;
+                border-radius: 13px;
+                overflow: hidden;
+                position: relative;
+                transition: all 0.15s;
+    
+                transform: scale(0.7);
+                opacity: 0.5;
+                
+                &.active{
+                    transform: scale(1);
+                    opacity: 1;
+                }
+                
+                img{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
             }
         }
     }
@@ -937,12 +972,12 @@ body{
 
         .instrumento{
             background: rgb(11, 16, 41);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             padding: clamp(25px, 6vh, 50px) clamp(20px, 4vw, 40px);
             gap: 50px;
             border-radius: 25px;
             opacity: 0;
+            max-height: 400px;
 
             img{
                 width: 100%;
@@ -982,22 +1017,30 @@ body{
 
 .perfil{
     background-color: #060914;
-    max-width: 1200px;
     padding: clamp(20px, 8vh, 80px) clamp(50px, 8vw, 100px);
+
+    .info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
     .container{
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
         gap: 25px;
         justify-content: space-between;
-        margin-top: 20px;
+        margin: 20px auto;
 
         .card{
             background: rgb(11, 16, 41);
             padding: 22px;
+            min-height: 140px;
             border: 1px solid rgba(96, 165, 250, 0.15);
             border-radius: 20px;
             transition: all .3s;
+
 
             &:hover{
                 transform: perspective(1000px) rotateX(10deg);
@@ -1056,7 +1099,7 @@ body{
             line-height: 1.85;
             font-weight: 300;
             font-style: italic;
-            color: rgb(171, 164, 172)
+            color: #7986a8
         }
 
         &:before{
@@ -1067,7 +1110,7 @@ body{
             font-size: 64px;
             line-height: 1;
             opacity: 0.5;
-            color: #fff;
+            color: #2563eb;
         }
     }
 
@@ -1081,7 +1124,6 @@ body{
 
 .aic-section{
     padding: clamp(20px, 8vh, 80px) clamp(50px, 8vw, 100px);
-    max-width: 1200px;
 
     .aic-header{
         padding: clamp(20px, 4vh, 40px) clamp(30px, 5vw, 48px);
@@ -1111,11 +1153,16 @@ body{
                 animation: MoverAbajo .6s ease forwards;
             }
         }
+
+        strong{
+            font-weight: 700;
+            color: #e2e8f0;
+        }
     }
 
     .aic-parrafo{
         margin-top: 40px;
-        font-size: 14px;
+        font-size: 15px;
         line-height: 1.7;
         color: #7896ab;
         opacity: 0;
@@ -1141,6 +1188,8 @@ body{
         }
 
         .normas{
+            box-shadow: 
+            3px 3px 6px rgba(87, 41, 211, 0.2);
             display: flex;
             align-items: flex-start;
             gap: 12px;
@@ -1208,7 +1257,6 @@ body{
 
 .reglas-section{
     padding: clamp(20px, 8vh, 80px) clamp(50px, 8vw, 100px);
-    max-width: 1200px;
 
     .tab-group{
         display: flex;
@@ -1231,10 +1279,12 @@ body{
 
             &.active{
                 background-color: violet;
+                color: #060914;
             }
 
             &:hover{
                 color: white;
+                transform: scale(1.08);
             }
         }
     }
@@ -1267,7 +1317,7 @@ body{
             display: flex;
             gap: 16px;
             align-items: flex-start;
-            color: #fff;
+            color: #7986a8;
             background-color: #0b1029;
             border: 1px solid rgba(96, 165, 250, 0.12);
             opacity: 0;
@@ -1276,6 +1326,7 @@ body{
 
             strong{
                 font-weight: 700;
+                color: #e2e8f0;
             }
 
 
@@ -1297,9 +1348,9 @@ body{
 
 .asistencia-section{
     padding: clamp(20px, 8vh, 80px) clamp(50px, 8vw, 100px);
-    max-width: 1200px;    
 
     .grid{
+        margin-top: 20px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -1316,6 +1367,8 @@ body{
     }
 
     .card{
+        box-shadow: 
+        6px 6px 10px rgba(87, 41, 211, 0.2);
         background-color: #0b1029;
         border: 1px solid rgba(96, 165, 250, 0.12);
         width: 300px;
@@ -1409,6 +1462,14 @@ section{
     margin-bottom: 50px;
 }
 
+@media (max-width: 1200px){
+    .header{
+        .bg-video{
+            filter: brightness(.68);
+        }
+    }
+}
+
 @media(min-width: 801px){
     .navbar{
         padding: 7px 10px 7px 0;
@@ -1420,6 +1481,20 @@ section{
 }
 
 @media (max-width: 800px) {
+    .header{
+        .bg-video{
+            filter: brightness(.45);
+        }
+
+        &::after{
+            background: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0.75) 0%,
+                rgba(0, 0, 0, 0.4) 45%,
+                transparent 100%
+            );
+        }
+    }
 
     .navbar{
         display:none;
@@ -1560,7 +1635,7 @@ section{
             margin: 25px clamp(10px, 6vw, 50px);
 
             .instrumento{
-                grid-template-columns: 1fr;
+                flex-direction: column;
             }
 
             img {
