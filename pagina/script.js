@@ -1,27 +1,31 @@
 console.log("tumadre")
+const pagina = document.body.dataset.page;
+console.log(pagina)
 
 function SaberMas() {
     window.location.href = "#especialidad";
 }
 
+if (pagina === "aic"){
+  const buttons1 = document.querySelectorAll(".tab-group button[data-tab]");
+  const contents = document.querySelectorAll(".tab-panel");
 
-const buttons1 = document.querySelectorAll(".tab-group button[data-tab]");
-const contents = document.querySelectorAll(".tab-panel");
+  buttons1.forEach(button => {
+    button.addEventListener("click", () =>{
+      buttons1.forEach(b => b.classList.remove("active"));
+      button.classList.add("active");
 
-buttons1.forEach(button => {
-  button.addEventListener("click", () =>{
-    buttons1.forEach(b => b.classList.remove("active"));
-    button.classList.add("active");
+      contents.forEach(c => c.classList.remove("active"));
 
-    contents.forEach(c => c.classList.remove("active"));
+      const tab = button.getAttribute("data-tab");
 
-    const tab = button.getAttribute("data-tab");
+      document.getElementById(tab).classList.add("active");
 
-    document.getElementById(tab).classList.add("active");
+      checkScroll();
+      });
+  });
+}
 
-    checkScroll();
-    });
-});
 
 
 //Animaciones Scroll
@@ -60,41 +64,48 @@ document.addEventListener("click", (e) => {
 
 //Preguntas del FAQ
 
-const faqItems = document.querySelectorAll(".faq-item");
-
-faqItems.forEach(item =>{
-  
-  const btn = item.querySelector(".faq-btn");
-  const body = item.querySelector(".faq-body");
-
-  btn.addEventListener("click", () => {
-    item.classList.toggle("active");
-
-    if(item.classList.contains("active")){
-      body.style.maxHeight = body.scrollHeight + "px";
-    }
-    else{
-      body.style.maxHeight = 0;
-    }
-  })
-})
-
-
-// cada vez que cambie la ventana de tamaño que se actualice
-
-window.addEventListener('resize', () => {
-  igualarAlturasPorIndice();
-  updateCarousel(contador);
-
+if (pagina === "index"){
   const faqItems = document.querySelectorAll(".faq-item");
 
   faqItems.forEach(item =>{
+    
+    const btn = item.querySelector(".faq-btn");
     const body = item.querySelector(".faq-body");
-    if(item.classList.contains("active")){
+
+    btn.addEventListener("click", () => {
+      item.classList.toggle("active");
+
+      if(item.classList.contains("active")){
         body.style.maxHeight = body.scrollHeight + "px";
-      };
+      }
+      else{
+        body.style.maxHeight = 0;
+      }
+    })
   })
-});
+}
+
+// cada vez que cambie la ventana de tamaño que se actualice
+
+if (pagina !== "aic"){
+  window.addEventListener('resize', () => {
+    if (pagina === "especialidad"){igualarAlturasPorIndice();}
+    updateCarousel();
+
+    if (pagina === "index"){
+      const faqItems = document.querySelectorAll(".faq-item");
+
+      faqItems.forEach(item =>{
+        const body = item.querySelector(".faq-body");
+        if(item.classList.contains("active")){
+            body.style.maxHeight = body.scrollHeight + "px";
+          };
+      })
+    }
+  });
+  
+}
+
 
 //Next
 
@@ -163,78 +174,85 @@ function igualarAlturasPorIndice() {
     }
   });
 }
+
 // Llamarlo al cargar la página
-window.addEventListener('load', () => {
-  igualarFilas();
-  igualarAlturasPorIndice();
-});
-
-
-
-const buttons2 = document.querySelectorAll(".btn-container button[data-tab]");
-console.log(buttons2);
-const tablas = document.querySelectorAll(".tabla-grid");
-
-buttons2.forEach(button => {
-  button.addEventListener("click", () =>{
-    buttons2.forEach(b => b.classList.remove("active"));
-    button.classList.add("active");
-    
-    tablas.forEach(t => t.classList.remove("active"));
-
-    const tab = button.getAttribute("data-tab");
-
-    document.getElementById(tab).classList.add("active")
-
+if (pagina === "especialidad"){
+  window.addEventListener('load', () => {
+    igualarFilas();
     igualarAlturasPorIndice();
   });
-});
+}
+
+
+
+if (pagina === "especialidad"){
+  const buttons2 = document.querySelectorAll(".btn-container button[data-tab]");
+  console.log(buttons2);
+  const tablas = document.querySelectorAll(".tabla-grid");
+
+  buttons2.forEach(button => {
+    button.addEventListener("click", () =>{
+      buttons2.forEach(b => b.classList.remove("active"));
+      button.classList.add("active");
+      
+      tablas.forEach(t => t.classList.remove("active"));
+
+      const tab = button.getAttribute("data-tab");
+
+      document.getElementById(tab).classList.add("active")
+
+      igualarAlturasPorIndice();
+    });
+  });
+}
 
 
 //carousel
 
-const WrapperContainer = document.querySelector(".galeria-section .container")
-const wrappers = document.querySelectorAll(".wrapper-inner");
+if (pagina !== "aic"){
+  const WrapperContainer = document.querySelector(".galeria-section .container")
+  const wrappers = document.querySelectorAll(".wrapper-inner");
 
-const btnPrev = document.querySelector(".botones button:first-child");
-const btnNext = document.querySelector(".botones button:last-child");
+  const btnPrev = document.querySelector(".botones button:first-child");
+  const btnNext = document.querySelector(".botones button:last-child");
 
-const mitad = Math.floor(wrappers.length / 2);
-let index = mitad;
+  const mitad = Math.floor(wrappers.length / 2);
+  let index = mitad;
 
-function obtenerContador() {
-  return index-mitad;
-}
-
-function updateCarousel(){
-  wrappers.forEach(w => w.classList.remove("active"));
-  wrappers[index].classList.add("active");
-
-  const contador = obtenerContador();
-  WrapperContainer.style.transform = `translateX(${-((wrappers[index].offsetWidth+50)*contador)}px)`;
-  
-  // se rompe si no son inpares
-  //WrapperContainer.style.transform = `translateX(${-((20.5*contador))}%)`;
-}
-
-
-btnNext.addEventListener("click", () =>{
-  index ++;
-  
-  if(index > wrappers.length-1){
-    index = 0;
+  function obtenerContador() {
+    return index-mitad;
   }
-  
-  updateCarousel();
-})
 
-btnPrev.addEventListener("click", () =>{
-  index --;
+  function updateCarousel(){
+    wrappers.forEach(w => w.classList.remove("active"));
+    wrappers[index].classList.add("active");
 
-  if(index < 0){
-    index = wrappers.length-1;
+    const contador = obtenerContador();
+    WrapperContainer.style.transform = `translateX(${-((wrappers[index].offsetWidth+50)*contador)}px)`;
+    
+    // se rompe si no son impares
+    //WrapperContainer.style.transform = `translateX(${-((20.5*contador))}%)`;
   }
-  
-  updateCarousel();
 
-})
+
+  btnNext.addEventListener("click", () =>{
+    index ++;
+    
+    if(index > wrappers.length-1){
+      index = 0;
+    }
+    
+    updateCarousel();
+  })
+
+  btnPrev.addEventListener("click", () =>{
+    index --;
+
+    if(index < 0){
+      index = wrappers.length-1;
+    }
+    
+    updateCarousel();
+
+  })
+}

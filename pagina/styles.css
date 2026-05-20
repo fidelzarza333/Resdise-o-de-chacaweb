@@ -1455,6 +1455,19 @@ body{
     }
 }
 
+@keyframes MostrarNav{
+    from{
+        height: 0;
+        opacity: 0;
+        
+    }
+
+    to{
+        height: 235px;
+        opacity: 1;
+    }
+}
+
 /* FIN DE SECCION DE chaca.html */
 
 section{
@@ -1497,8 +1510,6 @@ section{
     }
 
     .navbar{
-        display:none;
-        
         flex-direction: column;
         padding: 7px 10px;
 
@@ -1522,6 +1533,7 @@ section{
 
         nav{
             display: none;
+            overflow: hidden;
 
             ul{
                 padding: 0;
@@ -1540,6 +1552,7 @@ section{
         nav.active{
             display: flex;
             justify-content: center;
+            animation: MostrarNav 0.6s ease forwards;
         }
     }
 
