@@ -90,7 +90,6 @@ if (pagina === "index"){
 if (pagina !== "aic"){
   window.addEventListener('resize', () => {
     if (pagina === "especialidad"){igualarAlturasPorIndice();}
-    updateCarousel();
 
     if (pagina === "index"){
       const faqItems = document.querySelectorAll(".faq-item");
@@ -210,49 +209,65 @@ if (pagina === "especialidad"){
 //carousel
 
 if (pagina !== "aic"){
-  const WrapperContainer = document.querySelector(".galeria-section .container")
-  const wrappers = document.querySelectorAll(".wrapper-inner");
+  function CrearCarrusel(section){
 
-  const btnPrev = document.querySelector(".botones button:first-child");
-  const btnNext = document.querySelector(".botones button:last-child");
+    const WrapperContainer = section.querySelector(".container")
+    const wrappers = section.querySelectorAll(".wrapper-inner");
 
-  const mitad = Math.floor(wrappers.length / 2);
-  let index = mitad;
+    const btnPrev = section.querySelector(".botones button:first-child");
+    const btnNext = section.querySelector(".botones button:last-child");
 
-  function obtenerContador() {
-    return index-mitad;
+    let index = Math.floor(wrappers.length/2);
+
+    function updateCarousel(){
+      wrappers.forEach(w => w.classList.remove("active"));
+      wrappers[index].classList.add("active");
+
+      const wrapper = wrappers[index];
+      console.log(wrapper);
+
+      const ContainerRect = WrapperContainer.getBoundingClientRect();
+      const WrapperRect = wrapper.getBoundingClientRect();
+      console.log(ContainerRect);
+      console.log(WrapperRect);
+
+      const offset = (WrapperRect.left + WrapperRect.width / 2) - (ContainerRect.left + ContainerRect.width / 2);
+
+      WrapperContainer.style.transform = `translateX(${-offset}px)`;
+    }
+
+    btnNext.addEventListener("click", () =>{
+      index ++;
+      
+      if(index > wrappers.length-1){
+        index = 0;
+      }
+      
+      updateCarousel();
+    })
+
+    btnPrev.addEventListener("click", () =>{
+      index --;
+
+      if(index < 0){
+        index = wrappers.length-1;
+      }
+      
+      updateCarousel();
+
+    })
+
+    updateCarousel();
+    window.addEventListener('resize', () => {
+      updateCarousel();
+    });
   }
 
-  function updateCarousel(){
-    wrappers.forEach(w => w.classList.remove("active"));
-    wrappers[index].classList.add("active");
+  const carruseles = document.querySelectorAll(".galeria-section");
 
-    const contador = obtenerContador();
-    WrapperContainer.style.transform = `translateX(${-((wrappers[index].offsetWidth+50)*contador)}px)`;
-    
-    // se rompe si no son impares
-    //WrapperContainer.style.transform = `translateX(${-((20.5*contador))}%)`;
-  }
-
-
-  btnNext.addEventListener("click", () =>{
-    index ++;
-    
-    if(index > wrappers.length-1){
-      index = 0;
-    }
-    
-    updateCarousel();
+  carruseles.forEach(section => {
+    CrearCarrusel(section);
   })
 
-  btnPrev.addEventListener("click", () =>{
-    index --;
-
-    if(index < 0){
-      index = wrappers.length-1;
-    }
-    
-    updateCarousel();
-
-  })
+  
 }
