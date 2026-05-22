@@ -188,6 +188,48 @@ body{
     }
 }
 
+
+.noticias{
+    
+}
+
+.noticia-completa{
+    padding: clamp(20px, 6vh, 80px) clamp(30px, 10vw, 120px);
+
+    .noticia-inner{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        box-shadow: 
+        5px 5px 10px rgba(87, 41, 211, 0.1),
+        10px 10px 20px rgba(87, 41, 211, 0.2);
+        background: rgb(11, 16, 41);
+        color: rgb(121, 134, 168);
+        padding: 20px;
+        border: 1px solid rgba(96, 165, 250, 0.5);
+        border-radius: 20px;
+        transition: transform 0.35s, border-color 0.35s;
+
+        .arriba{
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+
+            .izquierda{
+                flex: 1;
+            }
+
+            .derecha{
+                flex: 1;
+            }
+        }
+
+        .abajo{
+            padding: 15px;
+        }
+    }
+}
+
 @keyframes RotarCard {
     from {
         opacity: 0;
