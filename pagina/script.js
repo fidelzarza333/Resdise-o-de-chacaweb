@@ -269,5 +269,4 @@ if (pagina !== "aic"){
     CrearCarrusel(section);
   })
 
-  
 }
