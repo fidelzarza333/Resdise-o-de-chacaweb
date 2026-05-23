@@ -1,5 +1,3 @@
-
-/* EL scroll-behavior no funciona por lo que vi*/
 html{
     scroll-behavior: smooth;
     scroll-padding-top: 64px;
@@ -149,14 +147,13 @@ body{
         display: flex;
         flex-direction: column;
         gap: 30px;
-        padding: 120px 5vw 0;
+        padding: 120px 5vw 50px;
 
         h1{
             display: inline-block;
             padding: 5px;
             font-size: clamp(40px, 7vw, 56px);
             font-weight: 800;
-            margin-top: 20px;
             color: #e8eaf6;
         }
 
@@ -188,47 +185,68 @@ body{
     }
 }
 
-
 .noticias{
-    
-}
-
-.noticia-completa{
     padding: clamp(20px, 6vh, 80px) clamp(30px, 10vw, 120px);
+    .noticia-completa{
+        padding: clamp(20px, 6vh, 80px) clamp(30px, 10vw, 120px);
 
-    .noticia-inner{
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        box-shadow: 
-        5px 5px 10px rgba(87, 41, 211, 0.1),
-        10px 10px 20px rgba(87, 41, 211, 0.2);
-        background: rgb(11, 16, 41);
-        color: rgb(121, 134, 168);
-        padding: 20px;
-        border: 1px solid rgba(96, 165, 250, 0.5);
-        border-radius: 20px;
-        transition: transform 0.35s, border-color 0.35s;
-
-        .arriba{
+        .noticia-inner{
             display: flex;
-            gap: 15px;
-            padding: 15px;
+            flex-direction: column;
+            box-shadow: 
+            5px 5px 10px rgba(87, 41, 211, 0.1),
+            10px 10px 20px rgba(87, 41, 211, 0.2);
+            background: rgb(11, 16, 41);
+            color: rgb(121, 134, 168);
+            padding: 20px;
+            border: 1px solid rgba(96, 165, 250, 0.5);
+            border-radius: 20px;
+            transition: transform 0.35s, border-color 0.35s;
 
-            .izquierda{
-                flex: 1;
+            .arriba{
+                display: flex;
+                flex-direction: row;
+                gap: 15px;
+                padding: 15px;
+                align-items: stretch;
+
+                .izquierda{
+                    flex: 1;
+
+                    p{
+                        margin-bottom:30px;
+                    }
+                }
+
+                .derecha{
+                    flex: 1;
+
+                    .wrapper-img{
+                        flex: 0 0 45%;
+                        aspect-ratio: 16 / 9;
+                        overflow: hidden;
+                        
+                        border-radius: 20px;
+                        align-self: center;
+
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            display: block;
+                        }
+                    }
+                }
             }
 
-            .derecha{
-                flex: 1;
+            .abajo{
+                padding: 15px;
             }
         }
-
-        .abajo{
-            padding: 15px;
-        }
-    }
+    }    
 }
+
+
 
 @keyframes RotarCard {
     from {
@@ -929,6 +947,7 @@ body{
     overflow: hidden;
     position: relative;
     perspective: 1000px;
+    margin-top: 70px;
 
     .container{
         display: flex;
@@ -1009,30 +1028,40 @@ body{
     .instrumentos-container{
         margin: clamp(25px, 5vw, 50px) clamp(50px, 7vw, 100px);
         display: flex;
+        align-items: center;
         flex-direction: column;
         gap: 50px;
 
         .instrumento{
             background: rgb(11, 16, 41);
             display: flex;
-            padding: clamp(25px, 6vh, 50px) clamp(20px, 4vw, 40px);
             gap: 50px;
+            align-items: center;
+            padding: clamp(25px, 6vh, 50px) clamp(20px, 4vw, 40px);
             border-radius: 25px;
-            opacity: 0;
-            max-height: 400px;
 
-            img{
-                width: 100%;
-                height: auto;
-                border-radius: 20px;
+            .wrapper-img{
+                flex: 0 0 45%;
+                aspect-ratio: 16 / 9;
                 overflow: hidden;
-            }
+                
+                border-radius: 20px;
+                align-self: center;
 
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                }
+            }
+            
             .instrumento-content{
+                flex: 1;
                 display: flex;
                 flex-direction: column;
-                gap: 30px;
-
+                justify-content: center;
+        
                 h3{
                     color: #fff;
                     font-size: 28px;
@@ -1447,6 +1476,10 @@ body{
             line-height: 1.7;
         }
 
+        ul{
+            padding: 0;
+        }
+
         li {
             margin: 20px;
             font-size: 14px;
@@ -1595,6 +1628,16 @@ section{
             display: flex;
             justify-content: center;
             animation: MostrarNav 0.6s ease forwards;
+        }
+    }
+
+    .noticias{
+        .noticia-completa{
+            .noticia-inner{
+                .arriba{
+                    flex-direction: column-reverse;
+                }
+            }
         }
     }
 

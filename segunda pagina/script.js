@@ -224,7 +224,14 @@ if (pagina !== "aic"){
       wrappers[index].classList.add("active");
 
       const wrapper = wrappers[index];
-      console.log(wrapper);
+
+      if (document.querySelector("#noticias")?.dataset.page === 'noticia'){
+        const itemIndex = wrapper.dataset.index;
+        const item = datos[itemIndex];
+        if(item){
+          MostrarNoticia(item);
+        }
+      }
 
       const ContainerRect = WrapperContainer.getBoundingClientRect();
       const WrapperRect = wrapper.getBoundingClientRect();
@@ -284,21 +291,22 @@ if (pagina !== "aic"){
   ]
 
   function MostrarNoticia(item){
-    const noticia = document.getElementById("noticia-completa");
-
-    noticia.innerHTML = `
-    <h2>${item.titulo}</h2>
-    `;
+    document.getElementById("fecha").innerHTML = `<strong>Fecha de la Noticia:</strong> ${item.fecha}`;
+    document.getElementById("sintesis").innerHTML = `<strong style="font-size: 20px;">Sintesis</strong><br>${item.sintesis}`;
+    document.getElementById("descripcion").innerHTML = `<strong style="font-size: 24px;">Descripcion</strong><br>${item.descripcion}`;
+    document.getElementById("imagen-noticia").src = item.imagen;
   }
 
   function CrearCarruselDinamico(contenedor, datos){
 
-    datos.forEach(item => {
+    datos.forEach((item, index) => {
       const card = document.createElement("div");
       card.classList.add("wrapper");
 
       const CardInner = document.createElement("div");
       CardInner.classList.add("wrapper-inner");
+
+      CardInner.dataset.index = index;
 
       CardInner.innerHTML = `
       <img src="${item.imagen}">
@@ -308,12 +316,7 @@ if (pagina !== "aic"){
       card.appendChild(CardInner);
       console.log(card);
 
-      card.addEventListener("click", () => {
-        MostrarNoticia(item);
-      })
-
       contenedor.appendChild(card);
-
     })
   }
 
