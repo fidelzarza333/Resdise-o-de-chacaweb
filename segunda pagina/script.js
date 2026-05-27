@@ -291,9 +291,10 @@ if (pagina !== "aic"){
   ]
 
   function MostrarNoticia(item){
+    document.getElementById("titulo").textContent = item.titulo;
     document.getElementById("fecha").innerHTML = `<strong>Fecha de la Noticia:</strong> ${item.fecha}`;
     document.getElementById("sintesis").innerHTML = `<strong style="font-size: 20px;">Sintesis</strong><br>${item.sintesis}`;
-    document.getElementById("descripcion").innerHTML = `<strong style="font-size: 24px;">Descripcion</strong><br>${item.descripcion}`;
+    document.getElementById("descripcion").textContent = item.descripcion;
     document.getElementById("imagen-noticia").src = item.imagen;
   }
 
@@ -310,10 +311,13 @@ if (pagina !== "aic"){
 
       CardInner.innerHTML = `
       <img src="${item.imagen}">
-      <h4>${item.titulo}</h4>
       `;
       console.log(CardInner);
       card.appendChild(CardInner);
+
+      card.innerHTML += `
+      <h4>${item.titulo}</h4>
+      `;
       console.log(card);
 
       contenedor.appendChild(card);

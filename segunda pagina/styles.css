@@ -187,6 +187,7 @@ body{
 
 .noticias{
     padding: clamp(20px, 6vh, 80px) clamp(30px, 10vw, 120px);
+    
     .noticia-completa{
         padding: clamp(20px, 6vh, 80px) clamp(30px, 10vw, 120px);
 
@@ -215,11 +216,20 @@ body{
 
                     p{
                         margin-bottom:30px;
+
+                        &.titulo{
+                            text-align: center;
+                            font-size: 32px;
+                            font-weight: bolder;
+                            color: #fff;
+                        }
                     }
+
                 }
 
                 .derecha{
                     flex: 1;
+                    align-self: center;
 
                     .wrapper-img{
                         flex: 0 0 45%;
@@ -241,6 +251,12 @@ body{
 
             .abajo{
                 padding: 15px;
+
+                .descripcion-abajo{
+                    font-size: 24px;
+                    font-weight: bolder;
+                    margin-bottom: 15px;
+                }
             }
         }
     }    
