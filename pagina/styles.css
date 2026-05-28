@@ -55,8 +55,7 @@ body{
     }
 
     img{
-        width: 75px;
-        height: 50px;
+        height: 44px;
     }
 }
 
@@ -123,9 +122,19 @@ body{
         position: fixed;
         top: 0;
         box-sizing: border-box;
+        padding: 10px;
+
+        .logo{
+            margin-left: 15px;
+
+            img{
+                margin-right: 10px;
+            }
+        }
 
         nav ul{
             display: flex;
+            padding-left: 0px;
             gap: 20px;
             align-items: center;
 
@@ -135,6 +144,7 @@ body{
                 border: none;
                 padding: 7px;
                 font-size: 22px;
+                border-radius: 100px;
             }
         }
     }
