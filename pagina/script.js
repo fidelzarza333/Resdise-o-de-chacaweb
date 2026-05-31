@@ -179,6 +179,11 @@ if (pagina === "especialidad"){
   });
 }
 
+if (pagina !== "especialidad"){
+  ajustarUltimaFila();
+  window.addEventListener('resize', ajustarUltimaFila);
+}
+
 
 
 if (pagina === "especialidad"){
@@ -265,4 +270,30 @@ if (pagina !== "aic"){
   carruseles.forEach(section => {
     CrearCarrusel(section);
   })
+}
+
+
+function ajustarUltimaFila() {
+    const container = document.querySelector('.tarjeta-container');
+    const cards = document.querySelectorAll('.tarjeta');
+    const gap = 40;
+    let minCardWidth = 0;
+    if (pagina === "index"){
+      minCardWidth = 340;
+    }
+    else{
+      minCardWidth = 250;
+    }
+
+    const columnas = Math.floor((container.offsetWidth + gap) / (minCardWidth + gap));
+    const ultimaFila = cards.length % columnas;
+
+
+    // resetear todas primero
+    cards.forEach(c => c.style.maxWidth = '');
+
+    if (ultimaFila !== 0) {
+        const anchoCard = cards[0].offsetWidth; // ancho real actual
+        cards.forEach(c => c.style.maxWidth = anchoCard + 'px');
+    }
 }
