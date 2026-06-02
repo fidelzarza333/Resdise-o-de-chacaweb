@@ -297,3 +297,11 @@ function ajustarUltimaFila() {
         cards.forEach(c => c.style.maxWidth = anchoCard + 'px');
     }
 }
+
+
+// para que el scale funcione en botones que tengan la animacion MostrarBtn
+document.querySelectorAll('.btn-container button').forEach(btn => {
+  btn.addEventListener('animationend', () => {
+    btn.style.animation = 'none';
+  })
+})
