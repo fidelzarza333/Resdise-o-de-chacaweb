@@ -305,3 +305,24 @@ document.querySelectorAll('.btn-container button').forEach(btn => {
     btn.style.animation = 'none';
   })
 })
+
+function ocultarSpinnerBiblio(){
+  const spinnerBiblio = document.getElementById("spinner-biblio-cargando");
+  spinnerBiblio.style.display = 'none';
+}
+
+function textoBiblioCargando() {
+  const texto = document.getElementById("texto-biblio-cargando");
+  let puntos = 0
+  
+  const intervalo = setInterval(() => {
+    puntos = (puntos + 1) % 3 ;
+    texto.textContent = "Cargando Biblioteca Digital." + ".".repeat(puntos);
+  }, 500);
+}
+textoBiblioCargando()
+
+function ocultarSpinner(){
+  const spinner = document.getElementById("spinner");
+  spinner.style.display = 'none';
+}

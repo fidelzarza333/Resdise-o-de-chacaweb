@@ -765,6 +765,7 @@ body{
         max-width: 750px;
         margin: 0 auto;
         display: flex;
+        align-items: flex-start;
         gap: 50px;
         border-radius: 15px;
         border: 1px solid rgba(96, 165, 250, 0.35);
@@ -803,6 +804,7 @@ body{
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
+                
                 h2{
                     opacity: 0;
                     color: #fff;
@@ -1183,6 +1185,8 @@ body{
     }
 }
 
+
+
 .perfil{
     background-color: #060914;
     padding: clamp(20px, 8vh, 80px) clamp(50px, 8vw, 100px);
@@ -1204,7 +1208,16 @@ body{
         justify-content: space-between;
         margin: 20px;
 
+        &.mostrar{
+            .card{
+                animation: var(--animation) .6s ease forwards;
+                animation-delay: calc(var(--delay) * 0.1s);
+            }
+
+        }
+
         .card{
+            opacity: 0;
             background: rgb(11, 16, 41);
             padding: 22px;
             min-height: 140px;
@@ -1601,6 +1614,13 @@ body{
     }
 }
 
+
+@keyframes Spinner{
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .biblioteca-section{
     padding: clamp(20px, 8vh, 80px) clamp(50px, 8vw, 100px);
     color: #fff;
@@ -1648,13 +1668,35 @@ body{
     }
     
     .biblio-digital-container{
-        
         opacity: 0;
         width: 100%;
         height: 600px;
         margin-top: 40px;
         display: flex;
         justify-content: center;
+
+        .spinner-biblio-cargando{
+            position: absolute;
+            inset: 0;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            z-index: 10;
+
+            .spinner{
+                width: 64px;
+                height: 64px;
+                animation: Spinner 1s linear infinite;
+            }
+
+            p{
+                color: black;
+                font-size: 22px;
+            }
+        }
 
         .biblio-digital{
             background: rgb(94, 105, 158);
@@ -1801,6 +1843,22 @@ section{
 
             .desc-stats{
                 grid-template-columns: 1fr;
+            }
+        }
+    }
+
+    .entrevista-section{
+        .entrevista-container{
+            flex-direction: column;
+            align-items: center;
+            max-width: 300px;
+    
+            .entrevista-left{
+                width: 100%;
+            }
+    
+            .entrevista-right{
+                width: 100%;
             }
         }
     }
