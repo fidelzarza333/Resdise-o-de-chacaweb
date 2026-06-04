@@ -306,23 +306,47 @@ document.querySelectorAll('.btn-container button').forEach(btn => {
   })
 })
 
+
 function ocultarSpinnerBiblio(){
-  const spinnerBiblio = document.getElementById("spinner-biblio-cargando");
-  spinnerBiblio.style.display = 'none';
+  setTimeout(() => {
+    clearInterval(intervaloBiblio);
+    const spinnerBiblio = document.getElementById("spinner-biblio-cargando");
+    spinnerBiblio.style.display = 'none';
+  }, 4000);
 }
 
 function textoBiblioCargando() {
   const texto = document.getElementById("texto-biblio-cargando");
   let puntos = 0
   
-  const intervalo = setInterval(() => {
+  return setInterval(() => {
     puntos = (puntos + 1) % 3 ;
     texto.textContent = "Cargando Biblioteca Digital." + ".".repeat(puntos);
   }, 500);
 }
-textoBiblioCargando()
 
+const intervaloBiblio = textoBiblioCargando()
+
+/* no funciona bien todavia
 function ocultarSpinner(){
-  const spinner = document.getElementById("spinner");
-  spinner.style.display = 'none';
+  setTimeout(() => {
+    console.log("jiodjsfasfaijuashfiju")
+    const spinner = document.getElementById("spinner-cargando");
+    console.log(spinner)
+    spinner.style.display = 'none';
+  }, 4000);
 }
+
+function textoCargando() {
+  const texto = document.getElementById("texto-cargando");
+  let puntos = 0
+  
+  return setInterval(() => {
+    puntos = (puntos + 1) % 3 ;
+    texto.textContent = "Cargando Mapa." + ".".repeat(puntos);
+  }, 500);
+}
+
+const intervalo = textoCargando()
+
+*/
