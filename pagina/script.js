@@ -5,11 +5,13 @@ function SaberMas() {
 }
 
 if (pagina === "aic"){
+  textoBiblioCargando()
+
   const buttons1 = document.querySelectorAll(".tab-group button[data-tab]");
   const contents = document.querySelectorAll(".tab-panel");
 
   buttons1.forEach(button => {
-    button.addEventListener("click", () =>{
+    button.addEventListener("click", () => {
       buttons1.forEach(b => b.classList.remove("active"));
       button.classList.add("active");
 
@@ -43,7 +45,11 @@ function checkScroll() {
 
 //ahora se ejecuta cuando vas a esa seccion desde un link tambien
 window.addEventListener("scroll", checkScroll);
-window.addEventListener("load", checkScroll);
+window.addEventListener("load", () => {
+  checkScroll;
+});
+
+  
 
 
 
@@ -87,7 +93,10 @@ if (pagina === "index"){
 
 if (pagina !== "aic"){
   window.addEventListener('resize', () => {
-    if (pagina === "especialidad"){igualarAlturasPorIndice();}
+    if (pagina === "especialidad"){
+      igualarAlturasPorIndice();
+      asignarAnimaciones();
+    }
 
     if (pagina === "index"){
       const faqItems = document.querySelectorAll(".faq-item");
@@ -176,6 +185,7 @@ if (pagina === "especialidad"){
   window.addEventListener('load', () => {
     igualarFilas();
     igualarAlturasPorIndice();
+    asignarAnimaciones()
   });
 }
 
@@ -309,10 +319,10 @@ document.querySelectorAll('.btn-container button').forEach(btn => {
 
 function ocultarSpinnerBiblio(){
   setTimeout(() => {
-    clearInterval(intervaloBiblio);
+    clearInterval(textoBiblioCargando());
     const spinnerBiblio = document.getElementById("spinner-biblio-cargando");
     spinnerBiblio.style.display = 'none';
-  }, 4000);
+  }, 3000);
 }
 
 function textoBiblioCargando() {
@@ -325,28 +335,79 @@ function textoBiblioCargando() {
   }, 500);
 }
 
-const intervaloBiblio = textoBiblioCargando()
 
-/* no funciona bien todavia
 function ocultarSpinner(){
   setTimeout(() => {
-    console.log("jiodjsfasfaijuashfiju")
     const spinner = document.getElementById("spinner-cargando");
-    console.log(spinner)
     spinner.style.display = 'none';
-  }, 4000);
+  }, 1000);
 }
 
+/*
 function textoCargando() {
-  const texto = document.getElementById("texto-cargando");
-  let puntos = 0
+  const texto2 = document.getElementById("texto-cargando");
+  let puntos = 0;
+
   
   return setInterval(() => {
     puntos = (puntos + 1) % 3 ;
-    texto.textContent = "Cargando Mapa." + ".".repeat(puntos);
+    texto2.textContent = "Cargando Mapa." + ".".repeat(puntos);
   }, 500);
-}
-
-const intervalo = textoCargando()
-
+} 
+  
+textoCargando();
 */
+
+
+
+function asignarAnimaciones(){
+  console.log("gkgkokk")
+  const cards = document.querySelectorAll(".card");
+  console.log(cards)
+
+  if (!cards.length) return;
+
+  const primeraFilaTop = cards[0].offsetTop;
+  let cardsPorFila = 0;
+
+  for (const card of cards) {
+    if (card.offsetTop === primeraFilaTop){
+      cardsPorFila++;
+    }
+    else{
+      break;
+    }
+  }
+
+  cards.forEach((card, index) => {
+    card.style = "";
+
+    const posicion = index % cardsPorFila;
+
+    if (cardsPorFila >= 3){
+      if (posicion === 0){
+        card.style = "--animation:MoverDerecha; --delay:"+`${index+1}`+";";
+      }
+      else if (posicion === cardsPorFila - 1){
+        card.style = "--animation:MoverIzquierda; --delay:"+`${index+1}`+";";
+      }
+      else if (index < cardsPorFila){
+        card.style = "--animation:MoverAbajo; --delay:"+`${index+1}`+";";
+      }
+      else{
+        card.style = "--animation:MoverArriba; --delay:"+`${index+1}`+";";
+      }
+    }
+    else if (cardsPorFila === 2){
+      if (posicion === 1){
+        card.style = "--animation:MoverIzquierda; --delay:"+`${index+1}`+";";
+      }
+      else{
+        card.style = "--animation:MoverDerecha; --delay:"+`${index+1}`+";";
+      }
+    }
+    else{
+      card.style = index % 2 === 0 ? "--animation:MoverIzquierda; --delay:"+`${index+1}`+";" : "--animation:MoverDerecha; --delay:"+`${index+1}`+";";
+    }
+  })
+}
