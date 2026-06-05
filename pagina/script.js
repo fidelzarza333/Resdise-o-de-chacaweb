@@ -394,7 +394,7 @@ function asignarAnimaciones(){
         card.style = "--animation:MoverIzquierda; --delay:"+`${index+1}`+";";
       }
       else if (index < cardsPorFila){
-        card.style = "--animation:MoverAbajo; --delay:"+`${index+1}`+";";
+        card.style = "--animation:MoverAbajoPerfil; --delay:"+`${index+1}`+";";
       }
       else{
         card.style = "--animation:MoverArriba; --delay:"+`${index+1}`+";";
@@ -413,3 +413,31 @@ function asignarAnimaciones(){
     }
   })
 }
+
+/* Intento de hacer que las cards tengan rotacion 3d, el card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY})deg`; no funciona bien
+function cardRotacion3D(){
+  const cards = document.querySelectorAll(".tarjeta-inner");
+
+  cards.forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 10;
+      const rotateX = -((y - rect.height / 2) / (rect.height / 2)) * 10;
+
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY})deg`;
+      console.log(card.style)
+
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "rotateX(0deg) rotateY(0deg)";
+    })
+  })
+}
+
+cardRotacion3D();
+*/
