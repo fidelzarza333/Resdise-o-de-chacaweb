@@ -1,11 +1,13 @@
 const pagina = document.body.dataset.page;
 
+let intervaloTexto;
+
 function SaberMas() {
     window.location.href = "#especialidad";
 }
 
 if (pagina === "aic"){
-  textoBiblioCargando()
+  intervaloTexto = textoBiblioCargando()
 
   const buttons1 = document.querySelectorAll(".tab-group button[data-tab]");
   const contents = document.querySelectorAll(".tab-panel");
@@ -319,7 +321,7 @@ document.querySelectorAll('.btn-container button').forEach(btn => {
 
 function ocultarSpinnerBiblio(){
   setTimeout(() => {
-    clearInterval(textoBiblioCargando());
+    clearInterval(intervaloTexto);
     const spinnerBiblio = document.getElementById("spinner-biblio-cargando");
     spinnerBiblio.style.display = 'none';
   }, 3000);
@@ -336,14 +338,14 @@ function textoBiblioCargando() {
 }
 
 
-function ocultarSpinner(){
+/*function ocultarSpinner(){
   setTimeout(() => {
     const spinner = document.getElementById("spinner-cargando");
     spinner.style.display = 'none';
   }, 1000);
 }
 
-/*
+
 function textoCargando() {
   const texto2 = document.getElementById("texto-cargando");
   let puntos = 0;
