@@ -1,0 +1,124 @@
+// Todo el carrusel
+
+if (pagina !== "aic"){
+  function CrearCarrusel(section){
+
+    const WrapperContainer = section.querySelector(".container")
+    const wrappers = section.querySelectorAll(".wrapper-inner");
+
+    const btnPrev = section.querySelector(".botones button:first-child");
+    const btnNext = section.querySelector(".botones button:last-child");
+
+    let index = Math.floor(wrappers.length/2);
+
+    function updateCarousel(){
+      wrappers.forEach(w => w.classList.remove("active"));
+      wrappers[index].classList.add("active");
+
+      const wrapper = wrappers[index];
+
+      if (document.querySelector("#noticias")?.dataset.page === 'noticia'){
+        const itemIndex = wrapper.dataset.index;
+        const item = datos[itemIndex];
+        if(item){
+          MostrarNoticia(item);
+        }
+      }
+
+      const ContainerRect = WrapperContainer.getBoundingClientRect();
+      const WrapperRect = wrapper.getBoundingClientRect();
+      console.log(ContainerRect);
+      console.log(WrapperRect);
+
+      const offset = (WrapperRect.left + WrapperRect.width / 2) - (ContainerRect.left + ContainerRect.width / 2);
+
+      WrapperContainer.style.transform = `translateX(${-offset}px)`;
+    }
+
+    btnNext.addEventListener("click", () =>{
+      index ++;
+      
+      if(index > wrappers.length-1){
+        index = 0;
+      }
+      
+      updateCarousel();
+    })
+
+    btnPrev.addEventListener("click", () =>{
+      index --;
+
+      if(index < 0){
+        index = wrappers.length-1;
+      }
+      
+      updateCarousel();
+
+    })
+
+    updateCarousel();
+    window.addEventListener('resize', () => {
+      updateCarousel();
+    });
+  }
+
+
+  const datos = [
+    {
+      id:1,
+      titulo:"hola",
+      fecha: "222222",
+      sintesis: "sintesis",
+      descripcion: "Descripcion",
+      imagen: "fotos/index/fto4.avif"
+    },
+    {
+      id:2,
+      titulo:"holhhha",
+      fecha: "22222hhh2",
+      sintesis: "sintehhhsis",
+      descripcion: "Descrhhhipcion",
+      imagen: "fotos/index/fto3.avif"
+    },
+  ]
+
+  function MostrarNoticia(item){
+    document.getElementById("fecha").innerHTML = `<strong>Fecha de la Noticia:</strong> ${item.fecha}`;
+    document.getElementById("sintesis").innerHTML = `<strong style="font-size: 20px;">Sintesis</strong><br>${item.sintesis}`;
+    document.getElementById("descripcion").innerHTML = `<strong style="font-size: 24px;">Descripcion</strong><br>${item.descripcion}`;
+    document.getElementById("imagen-noticia").src = item.imagen;
+  }
+
+  function CrearCarruselDinamico(contenedor, datos){
+
+    datos.forEach((item, index) => {
+      const card = document.createElement("div");
+      card.classList.add("wrapper");
+
+      const CardInner = document.createElement("div");
+      CardInner.classList.add("wrapper-inner");
+
+      CardInner.dataset.index = index;
+
+      CardInner.innerHTML = `
+      <img src="${item.imagen}">
+      <h4>${item.titulo}</h4>
+      `;
+      console.log(CardInner);
+      card.appendChild(CardInner);
+      console.log(card);
+
+      contenedor.appendChild(card);
+    })
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    CrearCarruselDinamico(document.querySelector("#noticias .container"), datos);
+    const carruseles = document.querySelectorAll(".galeria-section");
+
+    carruseles.forEach(section => {
+      CrearCarrusel(section);
+    })
+  })
+
+}
