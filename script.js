@@ -362,6 +362,8 @@ checkScroll();
 document.addEventListener("click", (e) => {
     if (e.target.closest("#menuBtn")) {
         document.getElementById("nav").classList.toggle("active");
+        
+        
     }
 
     if (e.target.closest("#nav a")) {

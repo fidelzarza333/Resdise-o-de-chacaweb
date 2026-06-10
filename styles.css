@@ -512,6 +512,11 @@ body{
                 font-weight: 500;
                 font-family: "texto-l";
 
+                span{
+                    text-align: left;
+                    line-height: 1.4;
+                }
+
                 .icon{
                     margin-left: 20px;
                     transition: transform .3s;
@@ -776,6 +781,11 @@ body{
         font-style: italic;
         font-weight: 300px;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+
     }
 }
 
@@ -1283,7 +1293,7 @@ body{
             gap: 50px;
             align-items: center;
             padding: clamp(25px, 6vh, 50px) clamp(20px, 4vw, 40px);
-            border-radius: 25px;
+            border-radius: 15px;
             opacity: 0;
 
             .wrapper-img{
@@ -1291,7 +1301,7 @@ body{
                 aspect-ratio: 16 / 9;
                 overflow: hidden;
                 
-                border-radius: 20px;
+                border-radius: 15px;
                 align-self: center;
 
                 img{
@@ -1307,6 +1317,7 @@ body{
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                gap: 16px;
         
                 h3{
                     color: var(--blanco);
@@ -1867,17 +1878,6 @@ body{
     }
 }
 
-@keyframes MostrarNav{
-    from{
-        max-height: 0;
-        opacity: 0;
-    }
-
-    to{
-        max-height: 300px;
-        opacity: 1;
-    }
-}
 
 /* FIN DE SECCION DE chaca.html */
 
@@ -1943,8 +1943,12 @@ section{
         }
 
         nav{
-            display: none;
+            display: flex;
             overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+
+            transition: max-height 0.5s ease, opacity 0.5s ease;
 
             ul{
                 padding: 0;
@@ -1961,10 +1965,12 @@ section{
         }
 
         nav.active{
-            display: flex;
-            justify-content: center;
-            animation: MostrarNav 0.8s ease forwards;
+            transition: max-height .7s ease-in, opacity .7s ease-in;
+            
+            max-height: 500px;
+            opacity: 1;
         }
+
     }
 
     .footer{
@@ -2087,6 +2093,10 @@ section{
 
             .instrumento-content {
                 order: 1;
+
+                h3{
+                    text-align: center;
+                }
             }
         }
     }
