@@ -377,6 +377,8 @@ document.addEventListener("click", (e) => {
 
 document.querySelectorAll('.btn-container button').forEach(btn => {
   btn.addEventListener('animationend', () => {
+    btn.style.opacity = '1';
+  
     btn.style.animation = 'none';
   })
 })

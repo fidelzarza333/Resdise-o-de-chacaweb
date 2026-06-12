@@ -908,7 +908,7 @@ body{
         padding: 50px 30px;
         font-family: "texto-l";
 
-        &::before{
+        /*&::before{
             content: '';
             position: absolute;
             inset: 0;
@@ -927,12 +927,12 @@ body{
             font-size: 1.5rem;
             font-weight: 600;
             z-index: 11;
-        }
+        }*/
 
         &.mostrar{
             animation: MoverDerecha 1s ease forwards;
 
-            /*.entrevista-right{
+            .entrevista-right{
                 animation: MostrarBtn .6s ease forwards;
                 animation-delay: calc(var(--delay) * 0.3s);
             }
@@ -953,7 +953,7 @@ body{
                     animation: MoverAbajo 1s ease forwards;
                     animation-delay: calc(var(--delay) * 0.3s);
                 }
-            }*/
+            }
         }
 
         .entrevista-left{
@@ -1068,6 +1068,7 @@ body{
             background: transparent;
             color: var(--blanco);
             cursor: pointer;
+            opacity: 0;
             transition: all 0.3s ease;
             
             &.active{
