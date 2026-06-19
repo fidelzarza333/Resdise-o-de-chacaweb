@@ -362,8 +362,6 @@ checkScroll();
 document.addEventListener("click", (e) => {
     if (e.target.closest("#menuBtn")) {
         document.getElementById("nav").classList.toggle("active");
-        
-        
     }
 
     if (e.target.closest("#nav a")) {
@@ -378,20 +376,19 @@ document.addEventListener("click", (e) => {
 document.querySelectorAll('.btn-container button').forEach(btn => {
   btn.addEventListener('animationend', () => {
     btn.style.opacity = '1';
-  
     btn.style.animation = 'none';
   })
 })
 
 
-fetch("/componentes/navbar.html")
+fetch("componentes/navbar.html")
   .then(res => res.text())
   .then(data => {
       document.getElementById("navbar").innerHTML = data;
   });
   
 let intervaloTexto2;
-fetch("/componentes/footer.html")
+fetch("componentes/footer.html")
   .then(res => res.text())
   .then(data => {
       document.getElementById("footer").innerHTML = data;
