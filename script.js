@@ -312,7 +312,7 @@ function ocultarSpinnerBiblio(){
 
 function textoBiblioCargando() {
   const texto = document.getElementById("texto-biblio-cargando");
-  let puntos = 0
+  let puntos = 0;
   
   return setInterval(() => {
     puntos = (puntos + 1) % 3 ;

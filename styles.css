@@ -373,14 +373,37 @@ body{
                 align-items: center;    
 
                 .left-link{
+                    color: var(--blanco);
+                    display: flex;
+                    justify-content: flex-start;
+                    gap: 20px;
+                    align-items: center;
+                
                     a{
-                        .image-wrapper{
-                            width: 50px;
-                            height: 50px;
-
-                            img{
-                                width: 100%;
-                                height: 100%;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 9px;
+                        border: 1px solid rgba(255, 255, 255, 0.12);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        transition: all 0.15s;
+                
+                        svg{
+                            width: 35px;
+                            height: 35px;
+                            fill: var(--footer-red-social-svg);
+                            transition: all 0.15s;
+                        }
+                        &.instagram{
+                            &:hover{
+                                background-color: var(--footer-border);
+                                border-color: var(--footer-red-social-hover);
+                
+                                svg{
+                                    fill: var(--footer-red-social-svg-hover);
+                                }
                             }
                         }
                     }
@@ -406,19 +429,60 @@ body{
     }
 
     .aria-body{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-        margin-top: 30px;
-        color: white;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        margin: auto;
+        margin-top: 70px;
 
-        .left, .right{
-            border: 5px solid white;
-            padding: 15px;
+        .tarjeta{           
+            .tarjeta-inner{
+                font-family: "texto-l";
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                box-shadow: 
+                5px 5px 10px rgba(87, 41, 211, 0.1),
+                10px 10px 20px var(--box-shadow);
+                background: var(--fondo-descripcion);
+                color: var(--texto-gris);
+                padding: 20px;
+                border: 1px solid rgba(96, 165, 250, 0.5);
+                border-radius: 20px;
+                transition: transform 0.35s, border-color 0.35s;
+                &:hover{
+                    border-color: rgba(96, 165, 250, 0.38); 
+                }
+            }
+        
+            .titulo{
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                color: var(--texto-blanco-gris);
+                align-items: center;
+            }
+        
+            .cuerpo{
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                min-height: 130px;
+        
+                p{
+                    font-size: 18px;
+                    color: rgba(120, 150, 171, 0.87);
+                    padding-top: 10px;
+                    width: 100%;
+                    letter-spacing: 0.3px;
+                    line-height: 19px;
+                }
+            }
         }
-
     }
 }
+
 
 .especialidades{
     padding: clamp(20px, 6vh, 80px) clamp(30px, 10vw, 120px);
@@ -1919,7 +1983,7 @@ body{
     .biblio-digital-container{
         position: relative;
         width: 100%;
-        height: 630px;
+        height: 1135px;
         margin-top: 40px;
         display: flex;
         justify-content: center;
