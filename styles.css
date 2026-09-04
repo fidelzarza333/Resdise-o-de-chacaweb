@@ -317,6 +317,39 @@ body{
     }
 }
 
+.aria-button {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 60px;
+    height: 60px;
+    z-index: 9999;
+    transition: all 0.2s;
+
+    animation: ariaPulse 2s ease-in-out infinite;
+
+    &:hover{
+        transform: scale(1.3);
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+}
+
+@keyframes ariaPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.65;
+    }
+}
+
 @keyframes RotarCard {
     from {
         opacity: 0;
@@ -409,9 +442,14 @@ body{
                     }
                 }
 
-                .right.link{
+                .right-link{
                     a{
                         overflow-wrap: anywhere;
+                        transition: all 0.2s;
+
+                        &:hover{
+                            color: var(--footer-red-social-svg-hover);
+                        }
                     }
                 }
             }
@@ -423,60 +461,11 @@ body{
                 align-self: center;
                 border-radius: 20px;
                 padding: 15px 50px;
-            }
-        }
+                transition: all 0.2s;
 
-    }
-
-    .aria-body{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 40px;
-        margin: auto;
-        margin-top: 70px;
-
-        .tarjeta{           
-            .tarjeta-inner{
-                font-family: "texto-l";
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-                box-shadow: 
-                5px 5px 10px rgba(87, 41, 211, 0.1),
-                10px 10px 20px var(--box-shadow);
-                background: var(--fondo-descripcion);
-                color: var(--texto-gris);
-                padding: 20px;
-                border: 1px solid rgba(96, 165, 250, 0.5);
-                border-radius: 20px;
-                transition: transform 0.35s, border-color 0.35s;
                 &:hover{
-                    border-color: rgba(96, 165, 250, 0.38); 
-                }
-            }
-        
-            .titulo{
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-                color: var(--texto-blanco-gris);
-                align-items: center;
-            }
-        
-            .cuerpo{
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-                min-height: 130px;
-        
-                p{
-                    font-size: 18px;
-                    color: rgba(120, 150, 171, 0.87);
-                    padding-top: 10px;
-                    width: 100%;
-                    letter-spacing: 0.3px;
-                    line-height: 19px;
+                    transform: scale(1.2);
+                    background-color: #b327b3;
                 }
             }
         }
@@ -570,7 +559,7 @@ body{
                     border-radius: 10px;
                     align-items: center;
                     justify-content: center;
-                    transition: all 0.2s ;
+                    transition: all 0.2s;
                     margin-bottom: 20px;
     
                     &:hover{
@@ -765,6 +754,7 @@ body{
                     justify-content: flex-start;
                     gap: 20px;
                     align-items: center;
+                    transition: all 0.2s;
 
                     a{
                         width: 30px;
@@ -776,6 +766,10 @@ body{
                         justify-content: center;
                         cursor: pointer;
                         transition: all 0.15s;
+
+                        &:hover{
+                            transform: scale(1.4);
+                        }
 
                         &.instagram{
                             &:hover{
@@ -797,11 +791,16 @@ body{
                                     fill: var(--blanco);
                                 }
                             }
+                        }
 
-
+                        &.aria-item{
+                            img{
+                                width: 100%; 
+                                height: 100%; 
+                                object-fit: cover;
+                            }
                         }
                         
-
                         svg{
                             width: 25px;
                             height: 25px;
@@ -2016,6 +2015,25 @@ body{
             width: 100%;
             height: 100%;
             border-radius: 25px;
+        }
+    }
+
+    .biblio-link{
+        margin-top: 30px;
+
+        a{
+            background-color: #a349a3;
+            border: 1px solid #7d377d;
+            display: inline-block;
+            align-self: center;
+            border-radius: 20px;
+            padding: 15px 50px;
+            transition: all 0.2s;
+
+            &:hover{
+                transform: scale(1.2);
+                background-color: #b327b3;
+            }
         }
     }
 }
